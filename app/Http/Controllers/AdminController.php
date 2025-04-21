@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Foto;
 
 class AdminController extends Controller
 {
@@ -15,6 +16,14 @@ class AdminController extends Controller
         $admins = User::where('tipo', 'admin')->get();
 
         return view('dashboard.admin', compact('admins'));
+    }
+
+    // Vista Administradores
+    public function indexDashboard()
+    {
+        $fotos = Foto::all();
+
+        return view('dashboard.galeria', compact('fotos'));
     }
 
     /**

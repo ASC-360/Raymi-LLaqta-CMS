@@ -21,13 +21,6 @@ class FotoController extends Controller
         return view('index', compact('fotos'));
     }
 
-    // Vista Administradores
-    public function indexDashboard()
-    {
-        $fotos = Foto::all();
-
-        return view('dashboard.galeria', compact('fotos'));
-    }
 
     /**
      * Show the form for creating a new resource.

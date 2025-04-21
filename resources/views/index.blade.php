@@ -17,20 +17,27 @@
 
     <header>
         <nav>
-            <div class="logo">Raymi Llaqta</div>
+            <div class="logo">Raymi Llacta</div>
             <ul>
                 <li class="active"><a href="#intro-section">Inicio</a></li>
                 <li><a href="#history-section">Historia</a></li>
                 <li><a href="#gallery-section">Galería</a></li>
                 <li><a href="#location-section">Ubicación</a></li>
                 <li><a href="#testimonials-section">Testimonios</a></li>
+                @if (Auth::user()->tipo === "admin")
+                    <li><a href="{{ route('dashboard-admin.index') }}">Dashboard</a></li>
+                @endif
                 <form action="{{ route('logout') }}" method="post">
+                    @csrf
                     <button type="submit"
                         class="ml-4 bg-transparent rounded-2xl text-blue-600 py-1 px-2 border-blue-600 border-2 hover:bg-blue-600 hover:text-white items-center">Cerrar
                         sesion</button>
                 </form>
             </ul>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <div>
+
+            </div>
         </nav>
     </header>
 
@@ -42,6 +49,9 @@
             <li><a href="#gallery-section">Galería</a></li>
             <li><a href="#location-section">Ubicación</a></li>
             <li><a href="#testimonials-section">Testimonios</a></li>
+            @if (Auth::user()->tipo === "admin")
+                    <li><a href="{{ route('dashboard-admin.index') }}">Dashboard</a></li>
+            @endif
         </ul>
     </div>
 
@@ -131,7 +141,7 @@
                 la esencia de este extraordinario sitio arqueológico.</p>
 
             {{-- Mostrar las fotos almacenadas en la DB--}}
-            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 w-full">
                 @forelse ($fotos as $foto)
                     <a href="{{ route('fotos.show', $foto->id )}}" class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
                         <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img"
@@ -140,8 +150,8 @@
                         <p>{{ $foto->descripcion }}</p>
                     </a>
                 @empty
-                <div class="bg-white rounded-[10px] shadow-2xl p-2 w-full h-100">
-                    <p class="text-center font-medium">No hay nada aqui</p>
+                <div class="bg-white rounded-[10px] shadow-2xl p-2 !w-full">
+                    <p class="text-center font-medium w-full">No hay nada aqui</p>
                 </div>
                 @endforelse
             </div>
@@ -349,24 +359,6 @@
             </div>
         </div>
 
-        <div class="footer-menu">
-            <div class="footer-item">
-                <i class="fas fa-cog"></i>
-                <span>Ajustes</span>
-            </div>
-            <div class="footer-item">
-                <i class="fas fa-bell"></i>
-                <span>Notificaciones</span>
-            </div>
-            <div class="footer-item">
-                <i class="fas fa-question-circle"></i>
-                <span>Ayuda</span>
-            </div>
-            <div class="footer-item">
-                <i class="fas fa-users"></i>
-                <span>Comunidad</span>
-            </div>
-        </div>
 
         <div class="copyright">
             <p>© 2025 Raymillacta de los Chachapoyas. Todos los derechos reservados.</p>
@@ -379,5 +371,4 @@
 
     <script src="/resources/js/script.js"></script>
 </body>
-
 </html>

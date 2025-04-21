@@ -39,9 +39,9 @@ class AuthController extends Controller
         if (Auth::user()->tipo === 'admin')
         {
             return redirect()->route('dashboard-admin.index');
-        } else {
-            
         }
+
+        return redirect()->route('fotos.index');
     }
 
     public function iniciarSesion(Request $request)

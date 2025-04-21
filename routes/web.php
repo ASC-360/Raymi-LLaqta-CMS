@@ -12,8 +12,12 @@ Route::get('/', function () {
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('dashboard-admin', AdminController::class);
-    
+
     Route::get('dashboard-galeria', [FotoController::class, 'indexDashboard'])->name('dashboard.galeria');
+
+});
+
+Route::middleware(['auth'])->group(function () {
 
     Route::resource('fotos', FotoController::class);
 });
