@@ -20,11 +20,6 @@ class AuthController extends Controller
         return view('auth.registro');
     }
 
-    public function inicioView()
-    {
-        return view('dashboard.dashboard');
-    }
-
     public function crearRegistro(Request $request)
     {
         $request->validate([
@@ -41,7 +36,12 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('inicio.view');
+        if (Auth::user()->tipo === 'admin')
+        {
+            return redirect()->route('dashboard-admin.index');
+        } else {
+            
+        }
     }
 
     public function iniciarSesion(Request $request)
@@ -52,12 +52,8 @@ class AuthController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->route('inicio.view');
+            return redirect()->route('dashboard-admin.index');
         }
-
-        return back()->withErrors([
-            'email' => 'Las credenciales no coinciden'
-        ]);
     }
 
     public function logout(Request $request)

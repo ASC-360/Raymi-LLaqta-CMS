@@ -3,16 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('auth.registro');
 });
 
-Route::get('dashboard-galeria', [FotoController::class, 'indexDashboard'])->name('dashboard.galeria');
+Route::middleware(['auth', 'admin'])->group(function () {
 
-Route::resource('fotos', FotoController::class);
+    Route::resource('dashboard-admin', AdminController::class);
+    
+    Route::get('dashboard-galeria', [FotoController::class, 'indexDashboard'])->name('dashboard.galeria');
+
+    Route::resource('fotos', FotoController::class);
+});
 
 
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

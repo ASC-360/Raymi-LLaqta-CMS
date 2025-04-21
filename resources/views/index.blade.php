@@ -131,9 +131,9 @@
                 la esencia de este extraordinario sitio arqueológico.</p>
 
             {{-- Mostrar las fotos almacenadas en la DB--}}
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 @forelse ($fotos as $foto)
-                    <a href="{{ route('fotos.show', $foto->id )}}" class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-150 cursor-pointer !text-black ">
+                    <a href="{{ route('fotos.show', $foto->id )}}" class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
                         <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img"
                             class="rounded-[10px] h-50 w-full">
                         <h1 class="font-medium">{{ $foto->titulo }}</h1>

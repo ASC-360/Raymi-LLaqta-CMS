@@ -3,18 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
+// Vista del login
 Route::get('login', [AuthController::class, 'loginView'])->name('login.view');
 
+// Vista del registro
 Route::get('registro', [AuthController::class, 'registerView'])->name('register.view');
 
+// Crear usuario
 Route::post('registro-crear', [AuthController::class, 'crearRegistro'])->name('register');
 
-Route::post('login-iniciar', [AuthController::class, 'iniciarSesion'])->name('login');
+// Iniciar sesion
+Route::post('login', [AuthController::class, 'iniciarSesion'])->name('login');
 
-Route::get('inicio', [AuthController::class,'inicioView'])->name('inicio.view');
-
+// Cerrar sesion
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
 

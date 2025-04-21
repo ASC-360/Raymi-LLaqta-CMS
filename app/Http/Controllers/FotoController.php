@@ -12,6 +12,8 @@ class FotoController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    // Vista usuarios
     public function index()
     {
         $fotos = Foto::all();
@@ -19,6 +21,7 @@ class FotoController extends Controller
         return view('index', compact('fotos'));
     }
 
+    // Vista Administradores
     public function indexDashboard()
     {
         $fotos = Foto::all();
@@ -40,32 +43,28 @@ class FotoController extends Controller
 
     public function store(Request $request)
     {
-        // Validación de los datos
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
-            'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg', // Validación de la imagen
+            'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
-        // Verificar si la imagen fue subida y si es válida
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
 
-            // Subir la imagen al directorio 'fotos' dentro de 'public'
             $ruta = $request->file('imagen')->store('fotos', 'public');
         } else {
 
-            // En caso de que no se haya subido la imagen correctamente
             return back()->withErrors(['imagen' => 'Hubo un problema al subir la imagen.']);
         }
 
-        // Crear la nueva entrada en la base de datos con los datos del formulario
+
         Foto::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'ruta' => $ruta
         ]);
 
-        // Redirigir con mensaje de éxito
+
         return redirect()->route('dashboard.galeria')->with('success', 'Creado exitosamente');
     }
 
