@@ -30,7 +30,7 @@
 
             {{-- Ingresar correo --}}
             <label for="email">Ingrese su correo:</label>
-            <x-input type="email" placeholder="ejemplo@gmail.com" name="email" />
+            <x-input type="email" placeholder="ejemplo@gmail.com" name="email" required />
 
             {{-- Mensajde de error de la contraseña --}}
             @error('password')
@@ -39,8 +39,8 @@
 
             {{-- Ingresar contraseña --}}
             <label for="password">Ingrese su contraseña:</label>
-            <x-input type="password" placeholder="************" name="password"></x-input>
-            
+            <x-input type="password" placeholder="************" name="password" required/>
+
             {{-- Verificar si el usuario tiene una cuenta --}}
             <div class="flex gap-2 justify-center">
                 <p>No tienes una cuenta?</p>

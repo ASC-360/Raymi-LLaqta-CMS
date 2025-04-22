@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\AdminController;
 
@@ -13,7 +12,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('dashboard-admin', AdminController::class);
 
-    Route::get('dashboard-galeria', [FotoController::class, 'indexDashboard'])->name('dashboard.galeria');
+    Route::get('dashboard-galeria', [AdminController::class, 'indexDashboard'])->name('dashboard.galeria');
 
 });
 

@@ -52,6 +52,10 @@
             @if (Auth::user()->tipo === "admin")
                     <li><a href="{{ route('dashboard-admin.index') }}">Dashboard</a></li>
             @endif
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit">Cerrar sesion</button>
+            </form>
         </ul>
     </div>
 

@@ -50,10 +50,17 @@ class AuthController extends Controller
 
         if (Auth::attempt($credenciales))
         {
-            $request->session()->regenerate();
-
-            return redirect()->route('dashboard-admin.index');
+            if (Auth::user()->tipo === 'admin')
+            {
+                return redirect()->route('dashboard-admin.index');
+            } else {
+                return redirect()->route('fotos.index');
+            }
         }
+
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden',
+        ]);
     }
 
     public function logout(Request $request)
