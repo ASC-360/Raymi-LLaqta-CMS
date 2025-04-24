@@ -12,7 +12,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('dashboard-admin', AdminController::class);
 
-    Route::get('dashboard-galeria', [AdminController::class, 'indexDashboard'])->name('dashboard.galeria');
+    Route::get('dashboard-galeria', [AdminController::class, 'indexFotoDashboard'])->name('dashboard.galeria');
 
 });
 

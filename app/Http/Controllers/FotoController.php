@@ -72,17 +72,33 @@ class FotoController extends Controller
         return view('img', compact('foto'));
     }
 
-    public function edit(string $id)
+    public function edit(Foto $foto)
     {
-        //
+        return view('dashboard.crud-fotos.update', compact('foto'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Foto $foto)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|string|max:100',
+            'descripcion' => 'nullable|string',
+            'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
+        ]);
+
+        if (Storage::disk('public')->exists($foto->imagen))
+        {
+            $foto->imagen = $request->file('imagen')->store('fotos', 'public');
+        }
+
+        $foto->update([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        return redirect()->route('dashboard.galeria');
     }
 
     /**

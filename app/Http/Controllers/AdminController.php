@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Foto;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
+    // Obtener los administradores en el dashboard
     public function index()
     {
         $admins = User::where('tipo', 'admin')->get();
@@ -18,59 +19,81 @@ class AdminController extends Controller
         return view('dashboard.admin', compact('admins'));
     }
 
-    // Vista Administradores
-    public function indexDashboard()
+    // Obtener las fotos en el dashboard
+    public function indexFotoDashboard()
     {
         $fotos = Foto::all();
 
         return view('dashboard.galeria', compact('fotos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+        return view('dashboard.crud-admin.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Crear un nuevo administrador
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'tipo' => 'admin'
+        ]);
+
+        return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador creado con exito');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    
+    public function show(User $user)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    
+    public function edit(User $user)
     {
-        //
+        return view('dashboard.crud-admin.update', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Actualizar algun dato del administrador
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string',
+        ]);
+
+        if (!Hash::check($request->password, Auth::user()->password)) {
+            return back()->withErrors([
+                'password' => 'Contraseña incorrecta',
+            ]);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'tipo' => 'admin'
+        ]);
+
+        return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador actualizado con exito');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // Eliminar administrador
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador eliminado con exito');
     }
 }

@@ -10,7 +10,7 @@
 </head>
 <body class="m-4">
     <x-siderbar id="siderbar" />
-    
+
     <div class="overflow-auto mt-10">
         <table border="1" class="w-full text-center">
             <thead class="bg-black text-white ">
@@ -32,6 +32,16 @@
                     <td>{{ $admin->tipo }}</td>
                     <td>{{ $admin->created_at }}</td>
                     <td>{{ $admin->updated_at }}</td>
+                    <td>
+                        <a href="{{ route('dashboard-admin.edit', $admin->id) }}">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('dashboard-admin.destroy', $admin->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-500 text-white py-1 px-2 rounded">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
                     <div>
@@ -41,6 +51,6 @@
             </tbody>
         </table>
     </div>
-    
+
 </body>
 </html>
