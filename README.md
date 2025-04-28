@@ -20,6 +20,7 @@ Laravel es accesible, poderoso y proporciona todas las herramientas necesarias p
 - **Composer**
 - **Node.js**
 - **PHP** (recomendado la versión más reciente compatible)
+- **MySQL Workbench**
 
 ## Pasos para clonar este repositorio
 
