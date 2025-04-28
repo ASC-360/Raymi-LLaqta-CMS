@@ -1,6 +1,6 @@
 {{-- Boton para abrir el Siderbar --}}
 <button id="button_siderbar"
-    class="font-bold p-2 transition-all duration-150 cursor-pointer fixed top-0 left-0 hover:bg-gray-300 dark:text-white dark:hover:bg-gray-900"><span
+    class="font-bold p-2 transition-all duration-150 cursor-pointer absolute top-0 left-0 hover:bg-gray-300 dark:text-white dark:hover:bg-gray-900"><span
         class="material-symbols-outlined">
         dehaze
     </span></button>

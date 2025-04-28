@@ -26,7 +26,8 @@
             </thead>
             <tbody class="dark:bg-black dark:text-white">
                 @forelse ($admins as $admin)
-                    <tr class="p-2 text-black hover:bg-black hover:text-white font-medium dark:hover:bg-white dark:text-white dark:hover:text-black">
+                    <tr
+                        class="p-2 text-black hover:bg-black hover:text-white font-medium dark:hover:bg-white dark:text-white dark:hover:text-black">
                         <td>{{ $admin->id }}</td>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
@@ -35,14 +36,19 @@
                         <td>{{ $admin->updated_at }}</td>
                         <td>
                             {{-- Boton actualizar --}}
-                            <a href="{{ route('dashboard-admin.edit', $admin->id) }}" class="boton__edit">Editar</a>
+                            <a href="{{ route('dashboard-admin.edit', $admin->id) }}" class="boton__edit"><span
+                                    class="material-symbols-outlined">
+                                    edit
+                                </span>Editar</a>
                         </td>
-                        <td>
+                        <td class="pl-4 py-2">
                             {{-- Boton eliminar --}}
                             <form action="{{ route('dashboard-admin.destroy', $admin->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="boton__delete">Eliminar</button>
+                                <button class="boton__delete"><span class="material-symbols-outlined">
+                                        delete
+                                    </span>Eliminar</button>
                             </form>
                         </td>
                     </tr>
