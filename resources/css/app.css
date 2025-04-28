@@ -19,10 +19,48 @@
     background-image: url('/public/img/DSC_1821.JPG');
 }
 
+
+
 #img_show.active {
     transform: scale(2);
 }
 
+.boton__delete {
+    background: transparent;
+    border: 2px solid red;
+    color: red;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+}
+
+
+.boton__delete:hover {
+    background: red;
+    color: white;
+}
+
+.boton__edit {
+    background: transparent;
+    border: 2px solid rgb(0, 110, 255);
+    color: rgb(0, 110, 255);
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.boton__edit:hover {
+    background: rgb(0, 110, 255);
+    color: white;
+}
 
 
 
