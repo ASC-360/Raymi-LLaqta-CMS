@@ -48,6 +48,13 @@
             <label for="password_confirmation">Confirme la contraseña:</label>
             <x-input type="password" placeholder="************" name="password_confirmation"></x-input>
 
+            @error('password_user')
+                <div class="text-red-500">{{ $message }}</div>
+            @enderror
+            {{-- Por seguridad, ingrese su propia contraseña --}}
+            <label for="password_user">Por seguridad, ingrese su propia contraseña:</label>
+            <x-input type="password" placeholder="************" name="password_user"></x-input>
+
             {{-- Enviar el formulario --}}
             <x-button type="submit">Crear administrador</x-button>
         </form>

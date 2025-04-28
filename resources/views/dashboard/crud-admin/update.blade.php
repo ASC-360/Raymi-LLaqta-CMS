@@ -12,9 +12,10 @@
 <body>
 
     <div class="bg-fondo p-2 flex items-center justify-center h-screen bg-cover bg-center">
-        <form action="{{ route('register') }}" method="POST"
+        <form action="{{ route('dashboard-admin.update', $user->id) }}" method="POST"
             class="bg-white/60 backdrop-blur-[5px] shadow-2xl w-110 p-4 rounded-2xl flex flex-col gap-2 border-white border-3">
             @csrf
+            @method('PUT')
 
             {{-- Titulo --}}
             <h1 class="font-bold text-2xl text-center text-black">Actualizar datos</h1>
@@ -39,18 +40,8 @@
             @error('password')
                 <div class="text-red-500">{{ $message }}</div>
             @enderror
-            <label for="contraseña">Ingrese su contraseña para confirmar los cambios:</label>
+            <label for="password">Ingrese la contraseña de la cuenta de <strong>{{ $user->name }}</strong> para confirmar:</label>
             <x-input type="password" placeholder="************" name="password" />
-
-           
-
-            {{-- Verificar si tiene una cuenta --}}
-            <div class="flex gap-2 justify-center">
-                <p>Ya tienes una cuenta?</p>
-                <a href="{{ route('login.view') }}"
-                    class="font-medium cursor-pointer decoration-1 hover:text-red-700 hover:underline">Iniciar
-                    sesion</a>
-            </div>
 
             {{-- Enviar el formulario --}}
             <x-button type="submit">Registrarme</x-button>

@@ -88,9 +88,14 @@ class FotoController extends Controller
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
-        if (Storage::disk('public')->exists($foto->imagen))
+        if ($request->hasFile('imagen'))
         {
-            $foto->imagen = $request->file('imagen')->store('fotos', 'public');
+            if (!empty($foto->ruta) && Storage::disk('public')->exists($foto->ruta))
+            {
+                Storage::disk('public')->delete($foto->ruta);
+            }
+
+            $foto->ruta = $request->file('imagen')->store('fotos', 'public');
         }
 
         $foto->update([
@@ -104,10 +109,17 @@ class FotoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Foto $foto)
+    public function destroy($id)
     {
-        Storage::disk('public')->delete($foto->ruta);
+        $foto = Foto::findOrFail($id);
+
+        if ($foto->ruta)
+        {
+            Storage::disk('public')->delete($foto->ruta);
+        }
 
         $foto->delete();
+
+        return redirect()->route('dashboard.galeria');
     }
 }
