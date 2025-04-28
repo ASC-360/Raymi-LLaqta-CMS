@@ -1,54 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Añadir foto</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body>
-    
-    {{-- Siderbar --}}
-    <x-siderbar id="siderbar" />
+@extends('layouts.admin')
 
-        <div class="flex items-center justify-center h-screen mx-4 ">
+@section('title', 'Añadir imagen | Dashboard')
 
-            <x-card>
+@section('content')
 
-                {{-- Formulario --}}
-                <form action="{{ route('fotos.store') }}" method="POST" class="flex flex-col gap-2" enctype="multipart/form-data">
-                    @csrf
-                    
-                    {{-- Titulo --}}
-                    <h1 class="font-bold text-center">Añadir imagen</h1>
+    <div class="flex items-center justify-center h-screen mx-4 ">
 
-                    {{-- Titulo de la imagen --}}
-                    <x-input type='text' placeholder="Titulo de la imagen" name="titulo" value="{{ old('titulo') }}"></x-input>
+        <x-card>
 
-                    @error('name')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+            {{-- Formulario --}}
+            <form action="{{ route('fotos.store') }}" method="POST" class="flex flex-col gap-2" enctype="multipart/form-data">
+                @csrf
 
-                    <x-textarea name="descripcion" />
+                {{-- Titulo --}}
+                <h1 class="font-bold text-center">Añadir imagen</h1>
 
-                    @error('descripcion')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+                {{-- Titulo de la imagen --}}
+                <label for="titulo">Añade un titulo</label>
+                <x-input type='text' placeholder="Titulo de la imagen" name="titulo" value="{{ old('titulo') }}"></x-input>
 
-                    {{-- Subir archivo --}}
+                @error('name')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
 
-                    @error('imagen')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+                <label for="descripcion">Añade una descripcion:</label>
+                <x-textarea name="descripcion" />
 
-                    <x-input type='file' placeholder="Subir imagen" name="imagen" value="{{ old('titulo') }}" accept="image/*" required></x-input>
+                @error('descripcion')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
 
-                
-                    <x-button type="sybmit">Subir imagen</x-button>
-                </form>
-            </x-card>
-        </div>
+                {{-- Subir archivo --}}
 
-</body>
-</html>
+                @error('imagen')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
+
+                <label for="imagen">Añadir imagen (JPG, JPGE, PNG):</label>
+                <x-input type='file' placeholder="Subir imagen" name="imagen" value="{{ old('titulo') }}"
+                    accept="image/*" required></x-input>
+
+
+                <x-button type="sybmit">Subir imagen</x-button>
+            </form>
+        </x-card>
+    </div>
+@endsection

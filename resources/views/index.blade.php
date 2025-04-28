@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raymi Llaqta de Chachapoyas</title>
-    <link rel="stylesheet" href="/resources/css/styles.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Raymi Llacta de Chachapoyas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    @vite(['resources/css/styles.css', 'resources/js/script.js', 'resources/css/app.css'])
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    @vite(['resources/css/styles.css', 'resources/js/script.js', 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="dark:bg-gray-800">
     <div class="loader-container">
         <div class="loader"></div>
     </div>
 
     <header>
-        <nav>
+        <nav class="dark:bg-gray-700">
             <div class="logo">Raymi Llacta</div>
             <ul>
                 <li class="active"><a href="#intro-section">Inicio</a></li>
@@ -24,8 +25,8 @@
                 <li><a href="#gallery-section">Galería</a></li>
                 <li><a href="#location-section">Ubicación</a></li>
                 <li><a href="#testimonials-section">Testimonios</a></li>
-                @if (Auth::user()->tipo === "admin")
-                    <li><a href="{{ route('dashboard-admin.index') }}">Dashboard</a></li>
+                @if (Auth::user()->tipo === 'admin')
+                    <a href="{{ route('dashboard-admin.index') }}" class="ml-2 ">Dashboard</a>
                 @endif
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
@@ -35,9 +36,6 @@
                 </form>
             </ul>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-            <div>
-
-            </div>
         </nav>
     </header>
 
@@ -49,23 +47,24 @@
             <li><a href="#gallery-section">Galería</a></li>
             <li><a href="#location-section">Ubicación</a></li>
             <li><a href="#testimonials-section">Testimonios</a></li>
-            @if (Auth::user()->tipo === "admin")
-                    <li><a href="{{ route('dashboard-admin.index') }}">Dashboard</a></li>
+            @if (Auth::user()->tipo === 'admin')
+                <a href="{{ route('dashboard-admin.index') }}">Dashboard</a>
             @endif
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button type="submit">Cerrar sesion</button>
+                <button type="submit"
+                    class="bg-transparent w-full rounded-2xl text-blue-600 py-1 px-2 border-blue-600 border-2 hover:bg-blue-600 hover:text-white items-center mt-4">Cerrar
+                    sesion</button>
             </form>
         </ul>
     </div>
 
     <main class="container">
-        <section id="intro-section" class="section">
-            <div class="intro-image">
+        <section id="intro-section" class="section h-screen">
+            <div class="intro-image h-full">
                 <div class="intro-overlay">
                     <h1 class="intro-title">Descubre Raymillacta</h1>
                     <p class="intro-text">Un viaje al corazón de la cultura Chachapoyas.</p>
-                    <button class="hero-btn">Explorar</button>
                 </div>
             </div>
         </section>
@@ -144,19 +143,20 @@
             <p>Explora la belleza y el misterio del Raymillacta a través de nuestra colección de imágenes que capturan
                 la esencia de este extraordinario sitio arqueológico.</p>
 
-            {{-- Mostrar las fotos almacenadas en la DB--}}
+            {{-- Mostrar las fotos almacenadas en la DB --}}
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 w-full">
                 @forelse ($fotos as $foto)
-                    <a href="{{ route('fotos.show', $foto->id )}}" class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
+                    <a href="{{ route('fotos.show', $foto->id) }}"
+                        class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
                         <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img"
                             class="rounded-[10px] h-50 w-full">
                         <h1 class="font-medium">{{ $foto->titulo }}</h1>
                         <p>{{ $foto->descripcion }}</p>
                     </a>
                 @empty
-                <div class="bg-white rounded-[10px] shadow-2xl p-2 !w-full">
-                    <p class="text-center font-medium w-full">No hay nada aqui</p>
-                </div>
+                    <div class="bg-white rounded-[10px] shadow-2xl p-2 !w-full">
+                        <p class="text-center font-medium w-full">No hay nada aqui</p>
+                    </div>
                 @endforelse
             </div>
 
@@ -241,9 +241,6 @@
                         sitio está extraordinariamente conservado y las vistas desde la cima son absolutamente
                         espectaculares. Nuestro guía local compartió fascinantes historias sobre los Chachapoyas."</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <img src="/api/placeholder/100/100" alt="María González">
-                        </div>
                         <div class="testimonial-info">
                             <h4>María González</h4>
                             <p>España</p>
@@ -265,9 +262,6 @@
                         Chachapoyas hacen de este sitio un lugar único. Recomiendo ir temprano para evitar multitudes."
                     </p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <img src="/api/placeholder/100/100" alt="John Smith">
-                        </div>
                         <div class="testimonial-info">
                             <h4>John Smith</h4>
                             <p>Estados Unidos</p>
@@ -288,9 +282,6 @@
                         paisaje de montaña es impresionante y cuando finalmente llegas al sitio arqueológico, la
                         sensación es indescriptible. Definitivamente vale la pena el esfuerzo."</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">
-                            <img src="/api/placeholder/100/100" alt="Luisa Mendoza">
-                        </div>
                         <div class="testimonial-info">
                             <h4>Luisa Mendoza</h4>
                             <p>Chile</p>
@@ -343,17 +334,6 @@
                 </ul>
             </div>
 
-            <div class="footer-footer-column">
-                <h4>Explora Más</h4>
-                <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Kuélap</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Sarcófagos de Karajía</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Laguna de los Cóndores</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Gocta Waterfall</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Museo Leymebamba</a></li>
-                </ul>
-            </div>
-
             <div class="footer-column footer-contact">
                 <h4>Contacto</h4>
                 <p><i class="fas fa-map-marker-alt"></i> Centro de Visitantes, Chachapoyas, Amazonas, Perú</p>
@@ -372,7 +352,5 @@
     <div class="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-
-    <script src="/resources/js/script.js"></script>
 </body>
 </html>
