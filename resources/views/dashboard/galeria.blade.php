@@ -1,49 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Galeria | Raymi Llaqta</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@section('title', 'Dashboard | Imagenes')
 
-<body>
-    <x-siderbar id="siderbar" />
-    <main class="w-full mt-10 p-4">
-        <h1 class="font-medium text-center text-3xl mb-2">Publicar una foto en la web</h1>
-        <x-link href="{{ route('fotos.create') }}" class="w-full">Añadir una foto</x-link>
+@section('content')
 
-        <div class="grid grid-cols-1 gap-4">
-            @forelse ($fotos as $foto)
-                <div class="w-full bg-white shadow-2xl flex flex-col rounded-2xl p-4">
-                    <div class="flex border-2 border-gray-300 w-full rounded-2xl p-4">
-                        <div class="w-[75%]">
-                            <h1 class="font-medium">ID:</h1>
-                            <p>{{ $foto->id }}</p>
-                            <h1 class="font-medium">Titulo:</h1>
-                            <p class="break-words">{{ $foto->titulo }}</p>
-                        </div>
-                        <div class="flex justify-end flex-col">
-                            <h1 class="font-medium">Vista de la imagen:</h1>
-                            <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img" class="h-50 rounded-2xl w-90 lg:w-80 lg:h-50">
-                        </div>
+    {{-- Agregar imagen  --}}
+    <a href="{{ route('fotos.create') }}" class="boton__edit mt-14"><span class="material-symbols-outlined">
+            person_add
+        </span>Agregar imagen</a>
+
+    {{-- Tabla --}}
+    <div class="overflow-auto mt-10">
+        <table border="1" class="w-full text-center">
+            <thead class="bg-black text-white">
+                <tr class="whitespace-nowrap">
+                    <th class="px-4">ID</th>
+                    <th class="px-8">Titulo</th>
+                    <th class="px-8">Descripcion</th>
+                    <th class="px-8 text-center">Imagen</th>
+                    <th class="px-8">Creacion de registro</th>
+                    <th class="px-8">Ultima actualizacion</th>
+                    <th class="px-4"></th>
+                    <th class="px-4"></th>
+                </tr>
+            </thead>
+            <tbody class="dark:bg-black dark:text-white">
+                @forelse ($fotos as $foto)
+                    <tr class="p-2 text-black hover:bg-black hover:text-white font-medium dark:hover:bg-white dark:text-white dark:hover:text-black">
+                        <td>{{ $foto->id }}</td>
+                        <td>{{ $foto->titulo }}</td>
+                        <td>{{ $foto->descripcion }}</td>
+                        <td>
+                            <a href="{{ route('fotos.show', $foto->id) }}">
+                                <img src="{{ asset('storage/' . $foto->ruta) }}" alt="{{ $foto->titulo }}" class="h-25 m-1 rounded-[10px] w-40 flex justify-center" >
+                            </a>
+                        </td>
+                        <td>{{ $foto->created_at }}</td>
+                        <td>{{ $foto->updated_at }}</td>
+                        <td>
+                            {{-- Boton actualizar --}}
+                            <a href="{{ route('fotos.edit', $foto->id) }}" class="boton__edit">Editar</a>
+                        </td>
+                        <td>
+                            {{-- Boton eliminar --}}
+                            <form action="{{ route('fotos.destroy', $foto->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="boton__delete">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <div class="bg-gray-200 rounded-[10px] mb-2 text-center p-2 dark:bg-gray-700">
+                        <p class="font-medium text-gray-500">Cuando publiques fotos se mostraran aqui y en la web </p>
                     </div>
-                    <div class="border-2 border-gray-300 w-full rounded-2xl p-4 mt-2">
-                        <h1 class="font-medium">Descripcion del post:</h1>
-                        <p class="break-words">{{ $foto->descripcion }}</p>
-                    </div>
-                </div>
-
-            @empty
-                <div class="bg-white rounded-[10px] shadow-2xl border-2 border-gray-300 h-auto p-2 w-full mt-4">
-                    <p class="text-center font-medium">No hay nada aqui</p>
-                </div>
-            @endforelse
-        </div>
-
-    </main>
-</body>
-
-</html>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+@endsection

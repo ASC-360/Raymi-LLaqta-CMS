@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard | Raymi Llaqta</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@extends('layouts.admin')
 
-</head>
-<body class="m-4">
-    <x-siderbar id="siderbar" />
+@section('title', 'Dashboard')
 
+@section('content')
+
+    {{-- Crear usuario administrador --}}
+    <a href="{{ route('dashboard-admin.create') }}" class="boton__edit mt-14"><span class="material-symbols-outlined">
+            person_add
+        </span>Crear un nuevo usuario</a>
+
+    {{-- Tabla --}}
     <div class="overflow-auto mt-10">
         <table border="1" class="w-full text-center">
             <thead class="bg-black text-white ">
@@ -21,28 +20,32 @@
                     <th>Tipo</th>
                     <th>Creacion de registro</th>
                     <th>Ultima actualizacion</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="dark:bg-black dark:text-white">
                 @forelse ($admins as $admin)
-                <tr class="p-2">
-                    <td>{{ $admin->id }}</td>
-                    <td>{{ $admin->name }}</td>
-                    <td>{{ $admin->email }}</td>
-                    <td>{{ $admin->tipo }}</td>
-                    <td>{{ $admin->created_at }}</td>
-                    <td>{{ $admin->updated_at }}</td>
-                    <td>
-                        <a href="{{ route('dashboard-admin.edit', $admin->id) }}">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('dashboard-admin.destroy', $admin->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="bg-red-500 text-white py-1 px-2 rounded">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
+                    <tr class="p-2 text-black hover:bg-black hover:text-white font-medium dark:hover:bg-white dark:text-white dark:hover:text-black">
+                        <td>{{ $admin->id }}</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{ $admin->tipo }}</td>
+                        <td>{{ $admin->created_at }}</td>
+                        <td>{{ $admin->updated_at }}</td>
+                        <td>
+                            {{-- Boton actualizar --}}
+                            <a href="{{ route('dashboard-admin.edit', $admin->id) }}" class="boton__edit">Editar</a>
+                        </td>
+                        <td>
+                            {{-- Boton eliminar --}}
+                            <form action="{{ route('dashboard-admin.destroy', $admin->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="boton__delete">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
                 @empty
                     <div>
                         <p>No hay administradores registrados</p>
@@ -51,6 +54,4 @@
             </tbody>
         </table>
     </div>
-
-</body>
-</html>
+@endsection

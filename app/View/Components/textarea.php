@@ -8,14 +8,16 @@ use Illuminate\View\Component;
 
 class textarea extends Component
 {
-    
+
     public $name;
     public $id;
+    public $value;
 
-    public function __construct($name = '', $id = '')
+    public function __construct($name = '', $id = '', $value = null)
     {
         $this->name = $name;
         $this->id = $id;
+        $this->value = $value;
     }
 
     /**
