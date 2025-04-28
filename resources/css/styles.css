@@ -168,14 +168,14 @@ nav ul li.active a {
 .close-menu {
     position: absolute;
     top: 15px;
-    right: 50px;
+    right: 5px;
     font-size: 1.5em;
     color: #fff;
     background: none;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
-    border-radius: 50%;
+    border-radius: 10px;
     transition: all 0.5s ease-in-out;
 }
 

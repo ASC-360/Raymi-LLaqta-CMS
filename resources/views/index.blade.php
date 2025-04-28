@@ -149,14 +149,12 @@
                     <a href="{{ route('fotos.show', $foto->id) }}"
                         class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
                         <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img"
-                            class="rounded-[10px] h-50 w-full">
+                            class="rounded-[10px] h-40 w-full">
                         <h1 class="font-medium">{{ $foto->titulo }}</h1>
-                        <p>{{ $foto->descripcion }}</p>
+                        <p class="break-words">{{ $foto->descripcion }}</p>
                     </a>
                 @empty
-                    <div class="bg-white rounded-[10px] shadow-2xl p-2 !w-full">
-                        <p class="text-center font-medium w-full">No hay nada aqui</p>
-                    </div>
+                    <p class="text-center font-medium">No hay nada aqui</p>
                 @endforelse
             </div>
 
@@ -295,16 +293,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="newsletter">
-                <h3>Suscríbete a nuestro boletín</h3>
-                <p>Recibe las últimas noticias, descubrimientos arqueológicos y consejos de viaje sobre Raymillacta y
-                    otros sitios Chachapoyas.</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Ingresa tu correo electrónico">
-                    <button type="submit" class="newsletter-btn">Suscribirse</button>
-                </form>
             </div>
         </section>
     </main>
