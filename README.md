@@ -46,10 +46,13 @@ Laravel es accesible, poderoso y proporciona todas las herramientas necesarias p
      ```bash
      php artisan storage:link
      ```
-
+   - Poblar la BD con datos de prueba (opcional):
+     ```bash
+     php artisan db:seed --class=UserSeeder
+     ```
 ## Notas adicionales
 
 - Configura las variables de entorno en tu archivo `.env`. Si no tienes una base de datos configurada, créala y ajusta el nombre en las variables de entorno correspondientes. Luego, ejecuta el siguiente comando para crear las tablas en la base de datos:
-
   ```bash
   php artisan migrate
+- Los datos de prueba se encuentran en la ruta: */database/seeders/UserSeeder.php*
