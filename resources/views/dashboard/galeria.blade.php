@@ -17,6 +17,7 @@
                     <th class="px-4">ID</th>
                     <th class="px-8">Titulo</th>
                     <th class="px-8">Descripcion</th>
+                    <th class="px-4">Barrio</th>
                     <th class="px-10 text-center">Imagen</th>
                     <th class="px-8">Creacion de registro</th>
                     <th class="px-8">Ultima actualizacion</th>
@@ -32,6 +33,9 @@
                         <td>{{ $foto->titulo }}</td>
                         <td class="break-words max-w-[250px] px-4">
                             {{ $foto->descripcion }}
+                        </td>
+                        <td>
+                            {{ $foto->barrio->nombre ?? 'Sin barrio' }}
                         </td>
                         <td>
                             <a href="{{ route('fotos.show', $foto->id) }}">
