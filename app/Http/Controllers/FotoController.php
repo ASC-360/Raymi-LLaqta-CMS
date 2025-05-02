@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Foto;
+use App\Models\Barrio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 
 class FotoController extends Controller
 {
@@ -16,7 +18,7 @@ class FotoController extends Controller
     // Vista usuarios
     public function index()
     {
-        $fotos = Foto::all();
+        $fotos = Foto::with('barrio')->get();
 
         return view('index', compact('fotos'));
     }
@@ -27,7 +29,9 @@ class FotoController extends Controller
      */
     public function create()
     {
-        return view('dashboard.crud-fotos.create');
+        $barrios = Barrio::all();
+
+        return view('dashboard.crud-fotos.create', compact('barrios'));
     }
 
     /**
@@ -39,6 +43,7 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
+            'id_barrio' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
@@ -54,7 +59,8 @@ class FotoController extends Controller
         Foto::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'ruta' => $ruta
+            'id_barrio' => $request->id_barrio,
+            'ruta' => $ruta,
         ]);
 
 
@@ -74,6 +80,8 @@ class FotoController extends Controller
 
     public function edit(Foto $foto)
     {
+        $barrios = Barrio::all();
+
         return view('dashboard.crud-fotos.update', compact('foto'));
     }
 
@@ -85,6 +93,7 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
+            'id_barrio' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
@@ -101,6 +110,7 @@ class FotoController extends Controller
         $foto->update([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
+            'id_barrio' => $request->id_barrio,
         ]);
 
         return redirect()->route('dashboard.galeria');

@@ -16,13 +16,14 @@
                 <h1 class="font-bold text-center">Añadir imagen</h1>
 
                 {{-- Titulo de la imagen --}}
-                <label for="titulo">Añade un titulo</label>
+                <label for="titulo">Añade un titulo:</label>
                 <x-input type='text' placeholder="Titulo de la imagen" name="titulo" value="{{ old('titulo') }}"></x-input>
 
                 @error('name')
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
+                {{-- Descripcion de la imagen --}}
                 <label for="descripcion">Añade una descripcion:</label>
                 <x-textarea name="descripcion" />
 
@@ -30,8 +31,15 @@
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror
 
-                {{-- Subir archivo --}}
+                <label>Selecciona el barrio:</label>
+                <select name="id_barrio" class="bg-white border-2 rounded-2xl p-1.5 font-medium outline-none placeholder-gray-400 transition-all duration-150 hover:bg-white hover:placeholder-gray-400 hover:text-black dark:bg-gray-600" required>
+                    <option value="" disabled selected>No seleccionado</option>
+                    @foreach ($barrios as $barrio)
+                        <option value="{{ $barrio->id }}">{{ $barrio->nombre }}</option>
+                    @endforeach
+                </select>
 
+                {{-- Subir archivo --}}
                 @error('imagen')
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror

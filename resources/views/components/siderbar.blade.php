@@ -36,9 +36,13 @@
                     image
                 </span>Fotos</x-link>
 
+            <x-link href="{{ route('barrios.index') }}" >Barrios</x-link>
+
             <x-link href="{{ route('fotos.index') }}"><span class="material-symbols-outlined">
                     home
                 </span>Ir a la web</x-link>
+
+
 
             <form action="{{ route('logout') }}" method="post" class="flex items-center justify-center">
                 @csrf

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descripcion');
+            $table->foreignId('id_barrio')->constrained('barrios')->onDelete('cascade');
             $table->string('ruta')->nullable();
             $table->timestamps();
         });
