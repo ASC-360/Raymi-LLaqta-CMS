@@ -38,7 +38,7 @@
 
             <x-link href="{{ route('barrios.index') }}" >Barrios</x-link>
 
-            <x-link href="{{ route('fotos.index') }}"><span class="material-symbols-outlined">
+            <x-link href="{{ route('intro.view') }}"><span class="material-symbols-outlined">
                     home
                 </span>Ir a la web</x-link>
 

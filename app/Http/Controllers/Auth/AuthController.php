@@ -41,7 +41,7 @@ class AuthController extends Controller
             return redirect()->route('dashboard-admin.index');
         }
 
-        return redirect()->route('fotos.index');
+        return redirect()->route('intro.view');
     }
 
     public function iniciarSesion(Request $request)
@@ -54,7 +54,7 @@ class AuthController extends Controller
             {
                 return redirect()->route('dashboard-admin.index');
             } else {
-                return redirect()->route('fotos.index');
+                return redirect()->route('intro.view');
             }
         }
 
