@@ -38,6 +38,11 @@
                         sesión</button>
                 </form>
             </ul>
+            <button
+                class="absolute top-0 right-0 p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900"
+                id="toogle_boton"><span class="material-symbols-outlined">
+                    dark_mode
+                </span>Modo oscuro</button>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </nav>
     </header>
@@ -46,11 +51,11 @@
     <div class="mobile-menu">
         <button class="close-menu"><i class="fas fa-times"></i></button>
         <ul>
-            <li class="active"><a href="#intro-section">Inicio</a></li>
-            <li><a href="#history-section">Historia</a></li>
-            <li><a href="#gallery-section">Galería</a></li>
-            <li><a href="#location-section">Ubicación</a></li>
-            <li><a href="#testimonials-section">Testimonios</a></li>
+            <li class="active"><a href="{{ route('intro.view') }}">Inicio</a></li>
+            <li><a href="{{ route('history.view') }}">Historia</a></li>
+            <li><a href="{{ route('gallery.view') }}">Galería</a></li>
+            <li><a href="{{ route('location.view') }}">Ubicación</a></li>
+            <li><a href="{{ route('testimonials.view') }}">Testimonios</a></li>
             @if (Auth::user()->tipo === 'admin')
                 <a href="{{ route('dashboard-admin.index') }}">Dashboard</a>
             @endif

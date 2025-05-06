@@ -8,7 +8,7 @@
                 la esencia de este extraordinario sitio arqueológico.</p>
 
 
-            <form action="{{ route('fotos.filtrar') }}" method="GET">
+            <form action="{{ route('gallery.view') }}" method="GET" class="mb-4">
                 <label for="barrio_id">Selecciona el barrio:</label>
                 <select name="barrio_id" id="barrio_id" onchange="this.form.submit()"
                     class="bg-white border-2 rounded-2xl p-1.5 font-medium outline-none placeholder-gray-400 transition-all duration-150 hover:bg-white hover:placeholder-gray-400 hover:text-black dark:bg-gray-600"
@@ -27,7 +27,7 @@
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 w-full">
                 @forelse ($fotos as $foto)
                     <a href="{{ route('fotos.show', $foto->id) }}"
-                        class="bg-white shadow p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
+                        class="bg-white shadow-2xl p-2 rounded-[10px] h-auto transition-all duration-300 cursor-pointer !text-black transform-duration hover:scale-105">
                         <img src="{{ asset('storage/' . $foto->ruta) }}" alt="img" class="rounded-[10px] h-40 w-full">
                         <h1 class="font-medium">{{ $foto->titulo }}</h1>
                         <p class="break-words">{{ $foto->descripcion }}</p>
