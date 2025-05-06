@@ -23,20 +23,6 @@ class FotoController extends Controller
         return view('sections.intro', compact('fotos'));
     }
 
-    public function filtrar(Request $request)
-    {
-        $barrios = Barrio::all();
-
-        if ($request->filled('barrio_id')) {
-            $fotos = Foto::where('barrio_id', $request->barrio_id)->get();
-        } else {
-            $fotos = Foto::all();
-        }
-
-        return view('fotos.index', compact('barrios', 'fotos'));
-    }
-
-
     /**
      * Show the form for creating a new resource.
      */

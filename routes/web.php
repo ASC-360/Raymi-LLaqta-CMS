@@ -23,8 +23,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('barrios', BarrioController::class);
 
-    Route::get('filtrar-fotos', [FotoController::class, 'filtrar'])->name('fotos.filtrar');
-
     // Ruta para la sección de Historia
     Route::get('/home', [ViewController::class, 'intro'])->name('intro.view');
 

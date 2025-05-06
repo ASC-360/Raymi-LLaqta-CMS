@@ -22,12 +22,19 @@ class ViewController extends Controller
     }
 
     // Método para la sección de Galería
-    public function gallery()
+    public function gallery(Request $request)
     {
-        $fotos = Foto::all();
         $barrios = Barrio::all();
+
+        if ($request->filled('barrio_id')) {
+            $fotos = Foto::where('barrio_id', $request->barrio_id)->get();
+        } else {
+            $fotos = Foto::all();
+        }
+
         return view('sections.gallery', compact('fotos', 'barrios'));
     }
+
 
     // Método para la sección de Ubicación
     public function location()
