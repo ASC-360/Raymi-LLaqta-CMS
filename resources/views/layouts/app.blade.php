@@ -105,6 +105,11 @@
         <div class="copyright text-center mt-6">
             <p>© 2025 Raymillacta de los Chachapoyas. Todos los derechos reservados.</p>
         </div>
+        <div class="flex gap-2 justify-center">
+            <p class="text-amber-400">Anthony Sucso (ASC) -</p>
+            <p>Jarold A.A.A -</p>
+            <p>Harley </p>
+        </div>
     </footer>
 
     <div class="scroll-top">

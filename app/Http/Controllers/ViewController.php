@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barrio;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,9 @@ class ViewController extends Controller
     // Método para la sección de Galería
     public function gallery()
     {
-        $fotos = Foto::all();  // Aquí se obtienen las fotos de la base de datos.
-        return view('sections.gallery', compact('fotos'));
+        $fotos = Foto::all();
+        $barrios = Barrio::all();
+        return view('sections.gallery', compact('fotos', 'barrios'));
     }
 
     // Método para la sección de Ubicación
