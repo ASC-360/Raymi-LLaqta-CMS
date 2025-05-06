@@ -22,7 +22,7 @@ class AdminController extends Controller
     // Obtener las fotos en el dashboard
     public function indexFotoDashboard()
     {
-        $fotos = Foto::all();
+        $fotos = Foto::with('barrio')->get();
 
         return view('dashboard.galeria', compact('fotos'));
     }

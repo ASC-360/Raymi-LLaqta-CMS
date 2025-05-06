@@ -20,7 +20,7 @@ class FotoController extends Controller
     {
         $fotos = Foto::with('barrio')->get();
 
-        return view('index', compact('fotos'));
+        return view('sections.intro', compact('fotos'));
     }
 
 
@@ -43,7 +43,7 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
-            'id_barrio' => 'required|exists:barrios,id',
+            'barrio_id' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
@@ -59,7 +59,7 @@ class FotoController extends Controller
         Foto::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'id_barrio' => $request->id_barrio,
+            'barrio_id' => $request->barrio_id,
             'ruta' => $ruta,
         ]);
 
@@ -93,7 +93,7 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
-            'id_barrio' => 'required|exists:barrios,id',
+            'barrio_id' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
@@ -110,7 +110,7 @@ class FotoController extends Controller
         $foto->update([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'id_barrio' => $request->id_barrio,
+            'barrio_id' => $request->barrio_id,
         ]);
 
         return redirect()->route('dashboard.galeria');
