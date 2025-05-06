@@ -7,6 +7,22 @@
             <p>Explora la belleza y el misterio del Raymillacta a través de nuestra colección de imágenes que capturan
                 la esencia de este extraordinario sitio arqueológico.</p>
 
+
+            <form action="{{ route('fotos.filtrar') }}" method="GET">
+                <label for="barrio_id">Selecciona el barrio:</label>
+                <select name="barrio_id" id="barrio_id" onchange="this.form.submit()"
+                    class="bg-white border-2 rounded-2xl p-1.5 font-medium outline-none placeholder-gray-400 transition-all duration-150 hover:bg-white hover:placeholder-gray-400 hover:text-black dark:bg-gray-600"
+                    required>
+                    <option value="" disabled selected>No seleccionado</option>
+                    @foreach ($barrios as $barrio)
+                        <option value="{{ $barrio->id }}" {{ request('barrio_id') == $barrio->id ? 'selected' : '' }}>
+                            {{ $barrio->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
+
+
             {{-- Mostrar las fotos almacenadas en la DB --}}
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 w-full">
                 @forelse ($fotos as $foto)
