@@ -32,7 +32,7 @@
                 @enderror
 
                 <label>Selecciona el barrio:</label>
-                <select name="id_barrio" class="bg-white border-2 rounded-2xl p-1.5 font-medium outline-none placeholder-gray-400 transition-all duration-150 hover:bg-white hover:placeholder-gray-400 hover:text-black dark:bg-gray-600" required>
+                <select name="barrio_id" class="bg-white border-2 rounded-2xl p-1.5 font-medium outline-none placeholder-gray-400 transition-all duration-150 hover:bg-white hover:placeholder-gray-400 hover:text-black dark:bg-gray-600" required>
                     <option value="" disabled selected>No seleccionado</option>
                     @foreach ($barrios as $barrio)
                         <option value="{{ $barrio->id }}">{{ $barrio->nombre }}</option>

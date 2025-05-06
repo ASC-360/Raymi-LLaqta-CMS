@@ -10,7 +10,7 @@ class Foto extends Model
     protected $fillable = [
         'titulo',
         'descripcion',
-        'id_barrio',
+        'barrio_id',
         'ruta',
     ];
 

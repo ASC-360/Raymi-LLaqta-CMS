@@ -20,7 +20,20 @@ class FotoController extends Controller
     {
         $fotos = Foto::with('barrio')->get();
 
-        return view('index', compact('fotos'));
+        return view('sections.intro', compact('fotos'));
+    }
+
+    public function filtrar(Request $request)
+    {
+        $barrios = Barrio::all();
+
+        if ($request->filled('barrio_id')) {
+            $fotos = Foto::where('barrio_id', $request->barrio_id)->get();
+        } else {
+            $fotos = Foto::all();
+        }
+
+        return view('fotos.index', compact('barrios', 'fotos'));
     }
 
 
@@ -43,7 +56,7 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
-            'id_barrio' => 'required|exists:barrios,id',
+            'barrio_id' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
@@ -59,7 +72,7 @@ class FotoController extends Controller
         Foto::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'id_barrio' => $request->id_barrio,
+            'barrio_id' => $request->barrio_id,
             'ruta' => $ruta,
         ]);
 
@@ -82,7 +95,7 @@ class FotoController extends Controller
     {
         $barrios = Barrio::all();
 
-        return view('dashboard.crud-fotos.update', compact('foto'));
+        return view('dashboard.crud-fotos.update', compact('foto', 'barrios'));
     }
 
     /**
@@ -93,14 +106,12 @@ class FotoController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
-            'id_barrio' => 'required|exists:barrios,id',
+            'barrio_id' => 'required|exists:barrios,id',
             'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
         ]);
 
-        if ($request->hasFile('imagen'))
-        {
-            if (!empty($foto->ruta) && Storage::disk('public')->exists($foto->ruta))
-            {
+        if ($request->hasFile('imagen')) {
+            if (!empty($foto->ruta) && Storage::disk('public')->exists($foto->ruta)) {
                 Storage::disk('public')->delete($foto->ruta);
             }
 
@@ -110,7 +121,7 @@ class FotoController extends Controller
         $foto->update([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'id_barrio' => $request->id_barrio,
+            'barrio_id' => $request->barrio_id,
         ]);
 
         return redirect()->route('dashboard.galeria');
@@ -123,8 +134,7 @@ class FotoController extends Controller
     {
         $foto = Foto::findOrFail($id);
 
-        if ($foto->ruta)
-        {
+        if ($foto->ruta) {
             Storage::disk('public')->delete($foto->ruta);
         }
 

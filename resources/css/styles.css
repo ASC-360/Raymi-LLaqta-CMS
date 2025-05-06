@@ -25,12 +25,10 @@ body {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 
-h2, h3 {
+
+h2,
+h3 {
     color: #555;
     margin-top: 0;
     margin-bottom: 15px;
@@ -77,18 +75,17 @@ li {
 }
 
 .loader {
-    border: 8px solid #f3f3f3; /* Light grey border */
-    border-top: 8px solid #3498db; /* Blue border on top */
+    border: 8px solid #f3f3f3;
+    /* Light grey border */
+    border-top: 8px solid #3498db;
+    /* Blue border on top */
     border-radius: 50%;
     width: 60px;
     height: 60px;
     animation: spin 2s linear infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+
 
 /* Header y navegación */
 header {
@@ -213,7 +210,8 @@ nav ul li.active a {
     color: #fff;
     text-align: center;
     position: relative;
-    background: none; /* Remove inline background */
+    background: none;
+    /* Remove inline background */
 }
 
 .intro-image {
@@ -223,7 +221,8 @@ nav ul li.active a {
     width: 100%;
     height: 100%;
     background: url('/public/img/DSC_1821.JPG') center/cover no-repeat;
-    z-index: -1; /* Place behind overlay */
+    z-index: -1;
+    /* Place behind overlay */
 }
 
 .intro-overlay {
@@ -606,11 +605,17 @@ nav ul li.active a {
 }
 
 /* Footer */
+/* Footer */
 footer {
     background-color: #333;
     color: #fff;
     padding: 40px 20px;
     margin-top: auto;
+    /* Esto hace que el footer se quede en la parte inferior si el contenido es pequeño */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    /* Asegura que el footer ocupe todo el ancho */
 }
 
 .footer-content {
@@ -702,6 +707,7 @@ footer {
     color: #aaa;
 }
 
+
 /* Botón de scroll al top */
 .scroll-top {
     position: fixed;
@@ -732,7 +738,8 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #28a745; /* Green */
+    background-color: #28a745;
+    /* Green */
     color: white;
     padding: 15px 25px;
     border-radius: 5px;
