@@ -38,12 +38,12 @@
                         sesión</button>
                 </form>
             </ul>
-            <button
-                class="absolute top-0 right-0 p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900"
-                id="toogle_boton"><span class="material-symbols-outlined">
+            <div class="flex gap-5">
+                <button class="p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900" id="toogle_boton"><span class="material-symbols-outlined">
                     dark_mode
                 </span>Modo oscuro</button>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
         </nav>
     </header>
 
