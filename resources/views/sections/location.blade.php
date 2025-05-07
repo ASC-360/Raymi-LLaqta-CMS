@@ -4,7 +4,7 @@
     <section id="location-section" class="section">
         <h3>Ubicación y Cómo Llegar</h3>
 
-        <div class="location-grid">
+        <div class="location-grid dark:bg-gray-800">
             <div class="location-info">
                 <h4>¿Cómo llegar al Raymillacta?</h4>
                 <p>El sitio arqueológico de Raymillacta se encuentra en la provincia de Chachapoyas, en la región
