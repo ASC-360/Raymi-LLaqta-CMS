@@ -13,6 +13,7 @@
     <div class="p-4">
 
         <div class="flex gap-2 justify-center items-center">
+
             {{-- Titulo del Siderbar --}}
             <h1 class="font-bold text-center text-[20px]">Raymi Dashboard</h1>
 
@@ -36,13 +37,13 @@
                     image
                 </span>Fotos</x-link>
 
-            <x-link href="{{ route('barrios.index') }}" >Barrios</x-link>
+            <x-link href="{{ route('barrios.index') }}" ><span class="material-symbols-outlined">
+                home
+            </span>Barrios</x-link>
 
             <x-link href="{{ route('intro.view') }}"><span class="material-symbols-outlined">
-                    home
+                public
                 </span>Ir a la web</x-link>
-
-
 
             <form action="{{ route('logout') }}" method="post" class="flex items-center justify-center">
                 @csrf
@@ -56,7 +57,7 @@
         </ul>
 
         {{-- Descripcion del usuario autenticado --}}
-        <div class="flex bg-blue-600 w-full rounded-[10px] p-2 gap-4 cursor-pointer mt-2">
+        <div class="flex bg-blue-600 w-full rounded-[10px] p-2 gap-4 mt-2">
 
             {{-- Avatar --}}
             <div class="rounded-[50%] w-10 h-10 bg-amber-500 text-white text-center text-2xl">

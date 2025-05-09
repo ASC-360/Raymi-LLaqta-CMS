@@ -1,6 +1,7 @@
 import './bootstrap';
 
 const siderbar = document.getElementById('siderbar');
+
 const buttonSiderbar = document.getElementById('button_siderbar');
 
 const btnCerrarSiderbar = document.getElementById('cerrar_siderbar');
