@@ -1,21 +1,25 @@
 @extends('layouts.admin')
 
-@section('title', 'Actualizar foto')
+@section('title', 'Editar foto | Dashboard')
 
 @section('content')
 
-    <div class="flex items-center justify-center h-screen mx-4 ">
+    <div class="flex items-center justify-center h-screen mx-4">
 
         <x-card>
 
+            <img src="{{ asset('img/DSC_0510.JPG') }}" class="fixed inset-0 -z-100 h-screen bg-cover bg-center w-full">
+            <img src="{{ asset('img/DSC_1763.JPG') }}" class="fixed inset-0 z-1 h-screen bg-cover bg-center w-full lg:hidden">
+
             {{-- Formulario --}}
-            <form action="{{ route('fotos.update', $foto->id) }}" method="POST" class="flex flex-col gap-2"
+            <form action="{{ route('fotos.update', $foto->id) }}" method="POST"
+                class="flex flex-col gap-2 bg-white p-4 rounded-[10px] text-black border-2 border-gray-400 dark:bg-gray-700 dark:border-0 dark:text-white z-100"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 {{-- Titulo --}}
-                <h1 class="font-bold text-center">Editar imagen</h1>
+                <h1 class="font-bold text-center text-3xl mb-2">Editar imagen</h1>
 
                 {{-- Titulo de la imagen --}}
                 <x-input type='text' placeholder="Titulo de la imagen" name="titulo"

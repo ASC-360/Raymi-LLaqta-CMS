@@ -11,9 +11,13 @@
 
 <body>
 
-    <div class="bg-fondo p-2 flex items-center justify-center h-screen bg-cover bg-center">
+    <img src="{{ asset('img/DSC_1739.JPG') }}" class="fixed inset-0 z-1 h-screen bg-cover bg-center w-full">
+    <img src="{{ asset('img/DSC_1763.JPG') }}" class="fixed inset-0 z-1 h-screen bg-cover bg-center w-full lg:hidden">
+
+    <div class="p-2 flex items-center justify-center h-screen bg-cover bg-center">
+
         <form action="{{ route('register') }}" method="POST"
-            class="bg-white/60 backdrop-blur-[5px] shadow-2xl w-110 p-4 rounded-2xl flex flex-col gap-2 border-white border-3">
+            class="bg-white/60 backdrop-blur-[5px] shadow-2xl w-110 p-4 rounded-2xl flex flex-col gap-2 border-white border-3 z-100">
             @csrf
 
             {{-- Titulo --}}

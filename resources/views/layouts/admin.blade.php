@@ -20,9 +20,9 @@
     {{-- Siderbar dinamico --}}
     <x-siderbar />
 
-    <button class="absolute top-0 right-0 p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900" id="toogle_boton"><span class="material-symbols-outlined">
+    <button class="absolute top-1 right-1 z-100 p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900" id="toogle_boton"><span class="material-symbols-outlined">
             dark_mode
-        </span>Modo oscuro</button>
+        </span></button>
 
 
     {{-- Contenido dinamico --}}

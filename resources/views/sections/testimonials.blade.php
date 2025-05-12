@@ -2,7 +2,7 @@
 
 @section('content')
     <section id="testimonials-section" class="section">
-        <h3>Lo que dicen nuestros visitantes</h3>
+        <h3 class="text-4xl font-medium text-center mb-2">Lo que dicen nuestros visitantes</h3>
         <p>Experiencias auténticas compartidas por viajeros que han explorado el fascinante mundo de los Chachapoyas
             en Raymillacta.</p>
 

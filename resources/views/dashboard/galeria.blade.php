@@ -4,13 +4,18 @@
 
 @section('content')
 
+    <div class="mt-14 text-center dark:text-white">
+        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">Tabla de imagenes</h1>
+        <p class="mt-4">Aqui se muestran las imagenes regitradas con el barrio respectivo</p>
+    </div>
+
     {{-- Agregar imagen  --}}
-    <a href="{{ route('fotos.create') }}" class="boton__edit mt-14"><span class="material-symbols-outlined">
+    <a href="{{ route('fotos.create') }}" class="boton__edit my-8"><span class="material-symbols-outlined">
             add_photo_alternate
         </span>Agregar imagen</a>
 
     {{-- Tabla --}}
-    <div class="overflow-auto mt-10">
+    <div class="overflow-auto">
         <table border="1" class="w-full text-center">
             <thead class="bg-black text-white">
                 <tr class="whitespace-nowrap">
@@ -32,9 +37,9 @@
                         <td>{{ $foto->id }}</td>
                         <td>{{ $foto->titulo }}</td>
                         <td class="break-words max-w-[250px] px-4">
-                            {{ $foto->descripcion }}
+                            {{ $foto->descripcion ?? 'Sin descripcion de la imagen' }}
                         </td>
-                        <td>
+                        <td class="px-10">
                             {{ $foto->barrio->nombre ?? 'Sin barrio' }}
                         </td>
                         <td>

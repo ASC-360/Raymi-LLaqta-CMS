@@ -4,13 +4,18 @@
 
 @section('content')
 
+    <div class="mt-14 text-center dark:text-white">
+        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">Tabla de barrios</h1>
+        <p class="mt-4">Estos son los barrios registrados. Puedes asignar uno a tu imagen subida. Si no encuentras tu barrio en la lista, ¡créalo y agrégalo!</p>
+    </div>
+
     {{-- Añadir barrio --}}
-    <a href="{{ route('barrios.create') }}" class="boton__edit mt-14"><span class="material-symbols-outlined">
-            person_add
-        </span>Añadir barrio</a>
+    <a href="{{ route('barrios.create') }}" class="boton__edit my-8"><span class="material-symbols-outlined">
+                home
+            </span>Añadir barrio</a>
 
     {{-- Tabla de barrios --}}
-    <div class="overflow-auto mt-10">
+    <div class="overflow-auto">
         <table border="1" class="w-full text-center">
             <thead class="bg-black text-white ">
                 <tr class="whitespace-nowrap">

@@ -77,21 +77,21 @@
                 <h4>Raymillacta</h4>
                 <p>Descubre la magia de uno de los sitios arqueológicos más importantes de la cultura Chachapoyas.</p>
                 <div class="footer-social">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/people/Raymi-Llaqta/61555832160237/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/p/DJadQ7Uua5O/?igsh=cHJqbjlqb2E4aTR4" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@raymillaqta2025" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCNWhuZ2710hdQF6XqB8grDw" class="social-icon"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="footer-column">
                 <h4>Enlaces Rápidos</h4>
                 <ul class="footer-links">
-                    <li><a href="#intro-section"><i class="fas fa-chevron-right"></i> Inicio</a></li>
-                    <li><a href="#history-section"><i class="fas fa-chevron-right"></i> Historia</a></li>
-                    <li><a href="#gallery-section"><i class="fas fa-chevron-right"></i> Galería</a></li>
-                    <li><a href="#location-section"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
-                    <li><a href="#testimonials-section"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
+                    <li><a href="{{ route('intro.view') }}"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="{{ route('history.view') }}"><i class="fas fa-chevron-right"></i> Historia</a></li>
+                    <li><a href="{{ route('gallery.view') }}"><i class="fas fa-chevron-right"></i> Galería</a></li>
+                    <li><a href="{{ route('location.view') }}"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
+                    <li><a href="{{ route('testimonials.view') }}"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
                 </ul>
             </div>
 
@@ -107,10 +107,13 @@
         <div class="copyright text-center mt-6">
             <p>© 2025 Raymillacta de los Chachapoyas. Todos los derechos reservados.</p>
         </div>
-        <div class="flex gap-2 justify-center">
-            <p class="text-amber-400">Anthony Sucso (ASC) -</p>
-            <p>Jarold A.A.A -</p>
-            <p>Harley </p>
+        <div class="flex gap-2 justify-center flex-col">
+            <p class="text-center text-gray-400">Realizado por estudiantes de SENATI - Chachapoyas</p>
+            <div class="flex justify-center gap-2">
+                <p class="text-orange-200">Anthony Sucso (ASC)</p>
+                <p> | </p>
+                <p> Harold A.A.A </p>
+            </div>
         </div>
     </footer>
 

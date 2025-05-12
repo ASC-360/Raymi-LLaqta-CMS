@@ -2,7 +2,7 @@
 
 @section('content')
     <section id="history-section" class="section">
-        <h3>Historia y Legado de los Chachapoyas</h3>
+        <h3 class="text-4xl font-medium text-center mb-2">Historia y Legado de los Chachapoyas</h3>
         <p>Los Chachapoyas fueron una cultura pre-inca que alcanzó su apogeo entre los años 900 y 1470 d.C. Su
             nombre, que significa "Pueblo de las Nubes", refleja la ubicación de sus asentamientos en las tierras
             altas nubladas del norte de Perú.</p>

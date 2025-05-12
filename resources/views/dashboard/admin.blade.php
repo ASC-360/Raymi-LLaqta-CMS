@@ -4,8 +4,13 @@
 
 @section('content')
 
+    <div class="mt-14 text-center dark:text-white">
+        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">Tabla de administradores</h1>
+        <p class="mt-4">Aqui se muestran las administradores regitrados. Los administradores pueden gestionar las imagenes, barrios y agregar mas administradores.</p>
+    </div>
+
     {{-- Crear usuario administrador --}}
-    <a href="{{ route('dashboard-admin.create') }}" class="boton__edit mt-14"><span class="material-symbols-outlined">
+    <a href="{{ route('dashboard-admin.create') }}" class="boton__edit my-8"><span class="material-symbols-outlined">
             person_add
         </span>Crear un nuevo usuario</a>
 
@@ -19,7 +24,7 @@
                     <th>Email</th>
                     <th>Tipo</th>
                     <th>Creacion de registro</th>
-                    <th>Ultima actualizacion</th>
+                    <th class="px-4">Ultima actualizacion</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -31,7 +36,7 @@
                         <td>{{ $admin->id }}</td>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->tipo }}</td>
+                        <td class="px-7">{{ $admin->tipo }}</td>
                         <td>{{ $admin->created_at }}</td>
                         <td>{{ $admin->updated_at }}</td>
                         <td>
@@ -53,9 +58,9 @@
                         </td>
                     </tr>
                 @empty
-                <div class="bg-gray-200 rounded-[10px] mb-2 text-center p-2 dark:bg-gray-700">
-                    <p class="font-medium text-gray-500">Cuanda añadas administradores puedes verlos aqui</p>
-                </div>
+                    <div class="bg-gray-200 rounded-[10px] mb-2 text-center p-2 dark:bg-gray-700">
+                        <p class="font-medium text-gray-500">Cuanda añadas administradores puedes verlos aqui</p>
+                    </div>
                 @endforelse
             </tbody>
         </table>

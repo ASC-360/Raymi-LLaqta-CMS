@@ -25,15 +25,13 @@ class ViewController extends Controller
     public function gallery(Request $request)
     {
         $barrios = Barrio::all();
+        $barrioId = $request->input('barrio_id'); // Capturamos el barrio_id de manera más clara
 
-        if ($request->filled('barrio_id')) {
-            $fotos = Foto::where('barrio_id', $request->barrio_id)->get();
-        } else {
-            $fotos = Foto::all();
-        }
+        $fotos = $barrioId ? Foto::where('barrio_id', $barrioId)->get() : Foto::all();
 
         return view('sections.gallery', compact('fotos', 'barrios'));
     }
+
 
 
     // Método para la sección de Ubicación

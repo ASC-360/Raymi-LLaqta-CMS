@@ -8,14 +8,18 @@
     <title>Iniciar sesion | Raymi Llaqta</title>
     @vite('resources/css/app.css')
 </head>
+
 <body>
+
+    <img src="{{ asset('img/DSC_1734.JPG') }}" class="fixed inset-0 z-1 h-screen bg-cover bg-center w-full">
+    <img src="{{ asset('img/DSC_1821.JPG') }}" class="fixed inset-0 z-1 h-screen bg-cover bg-center w-full lg:hidden">
 
     {{-- Contenedor padre para centrar el formulario --}}
     <div class="bg-fondo p-2 flex items-center justify-center h-screen bg-cover bg-center">
 
         {{-- Formulario --}}
         <form action="{{ route('login') }}" method="POST"
-            class="bg-white/60 backdrop-blur-[5px] shadow-2xl w-110 p-4 rounded-2xl flex flex-col gap-2 border-white border-3">
+            class="bg-white/60 backdrop-blur-[5px] shadow-2xl w-110 p-4 rounded-2xl flex flex-col gap-2 border-white border-3 z-100">
 
             {{-- Proteccion CSRF --}}
             @csrf
@@ -39,7 +43,7 @@
 
             {{-- Ingresar contraseña --}}
             <label for="password">Ingrese su contraseña:</label>
-            <x-input type="password" placeholder="************" name="password" required/>
+            <x-input type="password" placeholder="************" name="password" required />
 
             {{-- Verificar si el usuario tiene una cuenta --}}
             <div class="flex gap-2 justify-center">
@@ -55,4 +59,5 @@
         </form>
     </div>
 </body>
+
 </html>

@@ -43,7 +43,7 @@ class FotoController extends Controller
             'titulo' => 'required|string|max:100',
             'descripcion' => 'nullable|string',
             'barrio_id' => 'required|exists:barrios,id',
-            'imagen' => 'required|image|max:3500|mimes:jpg,png,jpeg',
+            'imagen' => 'required|image|max:10000|mimes:jpg,png,jpeg',
         ]);
 
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {

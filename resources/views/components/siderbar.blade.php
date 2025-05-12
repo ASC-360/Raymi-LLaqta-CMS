@@ -1,13 +1,13 @@
 {{-- Boton para abrir el Siderbar --}}
 <button id="button_siderbar"
-    class="font-bold p-2 transition-all duration-150 cursor-pointer absolute top-0 left-0 hover:bg-gray-300 dark:text-white dark:hover:bg-gray-900"><span
+    class="font-bold p-2 transition-all duration-150 cursor-pointer absolute top-0 left-0 hover:bg-gray-300 dark:text-white dark:hover:bg-gray-900 z-100"><span
         class="material-symbols-outlined">
         dehaze
     </span></button>
 
 {{-- Siderbar --}}
 <aside id="siderbar"
-    class="bg-blue-500 fixed left-0 h-screen transition-all duration-300 w-0 overflow-hidden top-0 text-white flex flex-col z-100">
+    class="bg-blue-500 fixed left-0 h-screen transition-all duration-300 w-0 overflow-hidden top-0 text-white flex flex-col z-300">
 
     {{-- Contenido del Siderbar --}}
     <div class="p-4">
@@ -26,7 +26,7 @@
         </div>
 
         {{-- Links del Siderbar --}}
-        <ul class="font-medium gap-2 flex flex-col justify-center text-left space-x-2">
+        <ul class="font-medium gap-2 flex flex-col justify-center text-left space-x-2 mt-4">
 
             <x-link href="{{ route('dashboard-admin.index') }}"><span class="material-symbols-outlined">
                     groups

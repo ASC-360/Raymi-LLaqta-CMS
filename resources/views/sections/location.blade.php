@@ -2,7 +2,7 @@
 
 @section('content')
     <section id="location-section" class="section">
-        <h3>Ubicación y Cómo Llegar</h3>
+        <h3 class="text-4xl font-medium text-center mb-2">Ubicación y Cómo Llegar</h3>
 
         <div class="location-grid dark:bg-gray-800">
             <div class="location-info">
