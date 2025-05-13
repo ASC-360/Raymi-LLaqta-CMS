@@ -15,6 +15,12 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.card {
+    background-color: rgb(56, 56, 56);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
 
 .bg-fondo {
     background-image: url('/public/img/DSC_1821.JPG');

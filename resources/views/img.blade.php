@@ -9,7 +9,7 @@
 </head>
 <body class="bg-black">
     <div class="flex items-center justify-center h-screen flex-col">
-        <img id="img_show" src="{{ asset('storage/' . $foto->ruta) }}" alt="img" class="h-80 w-full transition-transform duration-300 ease-in-out cursor-pointer lg:h-210">
+        <img id="img_show" src="{{ asset('storage/' . $foto->ruta) }}" alt="img" class="h-100 w-full transition-transform duration-300 ease-in-out cursor-pointer lg:h-210 sm:h-140 xl:h-230">
         <div class="text-white bg-black/60 p-3 w-full mt-4 fixed z-10 bottom-0" id="f">
             <h1 class="font-medium">Titulo:</h1>
             <p>{{ $foto->titulo }}</p>

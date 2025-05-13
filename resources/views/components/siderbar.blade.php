@@ -15,7 +15,7 @@
         <div class="flex gap-2 justify-center items-center">
 
             {{-- Titulo del Siderbar --}}
-            <h1 class="font-bold text-center text-[20px]">Raymi Dashboard</h1>
+            <h1 class="font-bold text-center text-[24px]">Raymi Dashboard</h1>
 
             {{-- Boton para cerrar el Siderbar --}}
             <button id="cerrar_siderbar"

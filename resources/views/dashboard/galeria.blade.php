@@ -4,15 +4,32 @@
 
 @section('content')
 
+    {{-- Titulo --}}
     <div class="mt-14 text-center dark:text-white">
-        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">Tabla de imagenes</h1>
+        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">
+            Tabla de imagenes</h1>
         <p class="mt-4">Aqui se muestran las imagenes regitradas con el barrio respectivo</p>
     </div>
 
     {{-- Agregar imagen  --}}
-    <a href="{{ route('fotos.create') }}" class="boton__edit my-8"><span class="material-symbols-outlined">
+    <a href="{{ route('fotos.create') }}" class="boton__edit my-4"><span class="material-symbols-outlined">
             add_photo_alternate
         </span>Agregar imagen</a>
+
+    {{-- Mensaje si la tabla esta vacia --}}
+    @if ($fotos->isEmpty())
+        <div class="bg-gray-200 rounded-[10px] mb-2 text-center p-2 dark:bg-gray-700 w-full">
+            <p class="font-medium text-gray-500">Cuando publiques fotos se mostraran aqui y en la web </p>
+        </div>
+    @endif
+
+    {{-- Mensaje de exito --}}
+    @if (session('success'))
+        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200"
+            id="success">
+            <p class="text-center text-green-500">{{ session('success') }}</p>
+        </div>
+    @endif
 
     {{-- Tabla --}}
     <div class="overflow-auto">
@@ -26,12 +43,12 @@
                     <th class="px-10 text-center">Imagen</th>
                     <th class="px-8">Creacion de registro</th>
                     <th class="px-8">Ultima actualizacion</th>
-                    <th ></th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody class="dark:bg-black dark:text-white">
-                @forelse ($fotos as $foto)
+                @foreach ($fotos as $foto)
                     <tr
                         class="p-2 text-black hover:bg-black hover:text-white font-medium dark:hover:bg-white dark:text-white dark:hover:text-black">
                         <td>{{ $foto->id }}</td>
@@ -69,11 +86,7 @@
                             </form>
                         </td>
                     </tr>
-                @empty
-                    <div class="bg-gray-200 rounded-[10px] mb-2 text-center p-2 dark:bg-gray-700">
-                        <p class="font-medium text-gray-500">Cuando publiques fotos se mostraran aqui y en la web </p>
-                    </div>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>

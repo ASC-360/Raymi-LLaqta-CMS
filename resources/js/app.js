@@ -13,12 +13,12 @@ buttonSiderbar.addEventListener('click', () => {
     if (window.innerWidth < 700) {
         siderbar.classList.toggle('w-full');
     } else {
-        siderbar.classList.toggle('w-70');
+        siderbar.classList.toggle('w-80');
     }
 });
 
 btnCerrarSiderbar.addEventListener('click', () => {
-    siderbar.classList.remove('w-full', 'w-70')
+    siderbar.classList.remove('w-full', 'w-80')
 })
 
 // Dark Mode
@@ -35,5 +35,16 @@ btnDarkMode.addEventListener('click', () => {
 
     localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 });
+
+// Success Message
+
+const success = document.getElementById('success');
+
+setTimeout(() => {
+    success.style.opacity = "0";
+    setTimeout(() => {
+        success.style.display = "none";
+    }, 500);
+}, 5000);
 
 

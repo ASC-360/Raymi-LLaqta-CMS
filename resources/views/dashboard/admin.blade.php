@@ -10,12 +10,19 @@
     </div>
 
     {{-- Crear usuario administrador --}}
-    <a href="{{ route('dashboard-admin.create') }}" class="boton__edit my-8"><span class="material-symbols-outlined">
+    <a href="{{ route('dashboard-admin.create') }}" class="boton__edit my-6"><span class="material-symbols-outlined">
             person_add
         </span>Crear un nuevo usuario</a>
 
+     @if (session('success'))
+        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200"
+            id="success">
+            <p class="text-center text-green-500">{{ session('success') }}</p>
+        </div>
+    @endif
+
     {{-- Tabla --}}
-    <div class="overflow-auto mt-10">
+    <div class="overflow-auto">
         <table border="1" class="w-full text-center">
             <thead class="bg-black text-white ">
                 <tr class="whitespace-nowrap">

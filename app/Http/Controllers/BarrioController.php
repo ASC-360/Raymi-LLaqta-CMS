@@ -38,7 +38,7 @@ class BarrioController extends Controller
             'nombre' => $request->name,
         ]);
 
-        return redirect()->route('barrios.index');
+        return redirect()->route('barrios.index')->with('success', 'Barrio creado exitosamente');
     }
 
     /**
@@ -74,7 +74,7 @@ class BarrioController extends Controller
             'nombre' => $request->name
         ]);
 
-        return redirect()->route('barrios.index');
+        return redirect()->route('barrios.index')->with('success', 'Barrio editado correctamente');
     }
 
     /**
@@ -86,6 +86,6 @@ class BarrioController extends Controller
 
         $barrio->delete();
 
-        return redirect()->route('barrios.index');
+        return redirect()->route('barrios.index')->with('success', 'Barrio eliminado exitosamente');
     }
 }

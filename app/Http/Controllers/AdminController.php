@@ -52,7 +52,7 @@ class AdminController extends Controller
                 'tipo' => 'admin'
             ]);
 
-            return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador creado con exito');
+            return redirect()->route('dashboard-admin.index')->with('success', 'Administrador creado con exito');
         } else {
             return back()->withErrors([
                 'password_user' => 'La contraseña que escribio no coincide',
@@ -90,7 +90,7 @@ class AdminController extends Controller
         {
             $user->update($validar);
 
-            return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador actualizado con exito');
+            return redirect()->route('dashboard-admin.index')->with('success', ' Datos del administrador actualizado con exito');
         } else {
 
             return back()->withErrors([
@@ -107,6 +107,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-        return redirect()->route('dashboard-admin.index')->with('success', 'Usuario administrador eliminado con exito');
+        return redirect()->route('dashboard-admin.index')->with('success', 'Administrador eliminado con exito');
     }
 }

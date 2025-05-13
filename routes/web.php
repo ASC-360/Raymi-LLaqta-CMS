@@ -7,7 +7,7 @@ use App\Http\Controllers\BarrioController;
 use App\Http\Controllers\ViewController;
 
 Route::get('/', function () {
-    return view('auth.registro');
+    return view('inicio');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

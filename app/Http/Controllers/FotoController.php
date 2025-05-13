@@ -63,7 +63,7 @@ class FotoController extends Controller
         ]);
 
 
-        return redirect()->route('dashboard.galeria')->with('success', 'Creado exitosamente');
+        return redirect()->route('dashboard.galeria')->with('success', 'Foto creada exitosamente');
     }
 
 
@@ -110,7 +110,7 @@ class FotoController extends Controller
             'barrio_id' => $request->barrio_id,
         ]);
 
-        return redirect()->route('dashboard.galeria');
+        return redirect()->route('dashboard.galeria')->with('success', 'Foto editada exitosamente');
     }
 
     /**
@@ -126,6 +126,6 @@ class FotoController extends Controller
 
         $foto->delete();
 
-        return redirect()->route('dashboard.galeria');
+        return redirect()->route('dashboard.galeria')->with('success', 'Barrio eliminado exitosamente');
     }
 }

@@ -21,8 +21,13 @@
     <!-- Header -->
     <header>
         <nav class="dark:bg-gray-700">
-            <div class="logo">Raymi Llacta</div>
-            <ul>
+            <div class="font-medium text-2xl sm:text-3xl md:text-3xl bg-gradient-to-r from-blue-500 to-sky-400 bg-clip-text text-transparent text-center">
+                <a href="{{ route('intro.view') }}">
+                    Raymi Llacta
+                </a>
+            </div>
+
+            <ul class="text-[16px]">
                 <li class="active"><a href="{{ route('intro.view') }}">Inicio</a></li>
                 <li><a href="{{ route('history.view') }}">Historia</a></li>
                 <li><a href="{{ route('gallery.view') }}">Galería</a></li>
@@ -77,10 +82,14 @@
                 <h4>Raymillacta</h4>
                 <p>Descubre la magia de uno de los sitios arqueológicos más importantes de la cultura Chachapoyas.</p>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/people/Raymi-Llaqta/61555832160237/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/p/DJadQ7Uua5O/?igsh=cHJqbjlqb2E4aTR4" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@raymillaqta2025" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/channel/UCNWhuZ2710hdQF6XqB8grDw" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/people/Raymi-Llaqta/61555832160237/" class="social-icon"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/p/DJadQ7Uua5O/?igsh=cHJqbjlqb2E4aTR4" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@raymillaqta2025" class="social-icon"><i
+                            class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCNWhuZ2710hdQF6XqB8grDw" class="social-icon"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
@@ -91,7 +100,8 @@
                     <li><a href="{{ route('history.view') }}"><i class="fas fa-chevron-right"></i> Historia</a></li>
                     <li><a href="{{ route('gallery.view') }}"><i class="fas fa-chevron-right"></i> Galería</a></li>
                     <li><a href="{{ route('location.view') }}"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
-                    <li><a href="{{ route('testimonials.view') }}"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
+                    <li><a href="{{ route('testimonials.view') }}"><i class="fas fa-chevron-right"></i> Testimonios</a>
+                    </li>
                 </ul>
             </div>
 
