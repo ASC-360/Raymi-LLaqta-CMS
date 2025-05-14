@@ -5,8 +5,10 @@
 @section('content')
 
     <div class="mt-14 text-center dark:text-white">
-        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">Tabla de administradores</h1>
-        <p class="mt-4">Aqui se muestran las administradores regitrados. Los administradores pueden gestionar las imagenes, barrios y agregar mas administradores.</p>
+        <h1 class="text-4xl font-bold lg:text-5xl bg-gradient-to-r from-sky-500 to-purple-500 text-transparent bg-clip-text">
+            Tabla de administradores</h1>
+        <p class="mt-4">Aqui se muestran las administradores regitrados. Los administradores pueden gestionar las imagenes,
+            barrios y agregar mas administradores.</p>
     </div>
 
     {{-- Crear usuario administrador --}}
@@ -14,10 +16,13 @@
             person_add
         </span>Crear un nuevo usuario</a>
 
-     @if (session('success'))
-        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200"
+    @if (session('success'))
+        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200 flex items-center justify-center gap-2 text-green-500"
             id="success">
-            <p class="text-center text-green-500">{{ session('success') }}</p>
+            <span class="material-symbols-outlined">
+                check_circle
+            </span>
+            <p>{{ session('success') }}</p>
         </div>
     @endif
 

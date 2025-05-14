@@ -22,13 +22,16 @@
         </div>
     @endif
 
-
     @if (session('success'))
-        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200"
+        <div class="bg-green-200 border-2 border-green-500 px-2 py-1 rounded-[10px] mb-4 transition-all duration-200 flex items-center justify-center gap-2 text-green-500"
             id="success">
-            <p class="text-center text-green-500">{{ session('success') }}</p>
+            <span class="material-symbols-outlined">
+                check_circle
+            </span>
+            <p>{{ session('success') }}</p>
         </div>
     @endif
+
 
     {{-- Tabla de barrios --}}
     <div class="overflow-auto">

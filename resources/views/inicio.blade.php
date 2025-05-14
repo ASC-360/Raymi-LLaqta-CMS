@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bienvenido | Raymi LLacta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gradient-to-r from-black via-black to-orange-800 m-4">
     <h1
-        class="bg-gradient-to-r from-orange-500 to-yellow-400 text-center text-5xl mt-10 mb-5 font-bold text-transparent bg-clip-text">
-        Raymi LLacta</h1>
+        class="bg-gradient-to-r from-orange-500 to-yellow-400 text-center text-5xl mt-10 mb-5 font-medium text-transparent bg-clip-text">
+        Raymi LLaqta</h1>
     <div class="flex gap-2 justify-center">
         <a href="{{ route('login.view') }}"
-            class="border-2 border-white rounded-[10px] text-white font-medium px-2 py-1 cursor-pointer transition-all duration-150 hover:bg-white hover:text-black">Iniciar
+            class="border-2 border-white rounded-[10px] text-white font-medium px-2 py-1 cursor-pointer transition-all duration-150 hover:bg-white hover:text-black items-center flex gap-2"><span
+                class="material-symbols-outlined">
+                login
+            </span>Iniciar
             sesion</a>
         <a href="{{ route('register.view') }}"
-            class="border-2 border-white rounded-[10px] text-white font-medium px-2 py-1 cursor-pointer transition-all duration-150 hover:bg-white hover:text-black">Registrarme</a>
+            class="border-2 border-white rounded-[10px] text-white font-medium px-2 py-1 cursor-pointer transition-all duration-150 hover:bg-white hover:text-black flex gap-2 items-center"><span
+                class="material-symbols-outlined">
+                account_circle
+            </span>Registrarme</a>
     </div>
 
     <h1 class="text-white text-3xl text-center my-5 font-medium">Secciones de nuestra web</h1>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
         <div class="card">
-            <h1
-                class="font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
-                Historia de Chachapoyas</h1>
+            <div
+                class="flex gap-2 items-center font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
+                <span class="material-symbols-outlined">
+                    menu_book
+                </span>
+                <h1>
+                    Historia de Chachapoyas</h1>
+            </div>
             <p>Chachapoyas es una ciudad ubicada en la región Amazonas de Perú, y su nombre proviene de la civilización
                 Chachapoya, conocida como los "Guerreros de las Nubes". Esta cultura preincaica habitó las zonas
                 montañosas y bosques nubosos de la región, desarrollando técnicas arquitectónicas avanzadas.
@@ -40,10 +53,15 @@
         </div>
 
         <div class="card">
-            <h1
-                class="font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
-                Galería de Fotos</h1>
-            <p>La festividad de Raymi Llacta es una de las celebraciones más representativas de Chachapoyas, un evento
+            <div
+                class="flex gap-2 items-center font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
+                <span class="material-symbols-outlined">
+                    imagesmode
+                </span>
+                <h1>
+                    Galeria de fotos</h1>
+            </div>
+            <p>La festividad de Raymi Llaqta es una de las celebraciones más representativas de Chachapoyas, un evento
                 lleno de color, música y tradición que refleja la identidad cultural de la región.
                 En nuestra galería de imágenes, podrás admirar los momentos más emblemáticos de esta festividad, desde
                 los desfiles con trajes típicos hasta las vibrantes danzas tradicionales que evocan el pasado ancestral
@@ -54,9 +72,14 @@
         </div>
 
         <div class="card">
-            <h1
-                class="font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
-                Ubicación</h1>
+            <div
+                class="flex gap-2 items-center font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+                <h1>
+                    Ubicacion</h1>
+            </div>
             <p>Chachapoyas se encuentra en la sierra norte de Perú, en el departamento de Amazonas, un destino turístico
                 rodeado de montañas, valles y bosques nubosos.
                 Para llegar, los visitantes pueden tomar vuelos desde Lima hasta Jaén y luego viajar por carretera en un
@@ -68,9 +91,14 @@
         </div>
 
         <div class="card">
-            <h1
-                class="font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
-                Testimonios</h1>
+            <div
+                class="flex gap-2 items-center font-medium text-2xl bg-gradient-to-r from-orange-500 to-yellow-400 text-transparent bg-clip-text">
+                <span class="material-symbols-outlined">
+                    3p
+                </span>
+                <h1>
+                    Testimonios</h1>
+            </div>
             <p>Aquí, se recopilan relatos de viajeros que han quedado maravillados con la historia, la cultura y la
                 naturaleza que caracterizan esta región. Desde quienes han visitado la imponente fortaleza de Kuélap y
                 han quedado impresionados por su arquitectura, hasta aquellos que han recorrido los senderos que llevan

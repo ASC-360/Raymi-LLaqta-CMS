@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Raymi Llacta de Chachapoyas</title>
+    <title>Raymi Llaqta de Chachapoyas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     @vite(['resources/css/styles.css', 'resources/js/script.js', 'resources/css/app.css', 'resources/js/app.js'])
@@ -23,7 +23,7 @@
         <nav class="dark:bg-gray-700">
             <div class="font-medium text-2xl sm:text-3xl md:text-3xl bg-gradient-to-r from-blue-500 to-sky-400 bg-clip-text text-transparent text-center">
                 <a href="{{ route('intro.view') }}">
-                    Raymi Llacta
+                    Raymi Llaqta
                 </a>
             </div>
 
