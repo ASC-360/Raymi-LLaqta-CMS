@@ -1,0 +1,17 @@
+{
+  "public/img/DSC_1821.JPG": {
+    "file": "assets/DSC_1821-CrKokUGa.JPG",
+    "src": "public/img/DSC_1821.JPG"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DcGugV9Z.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CoW07oI8.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
