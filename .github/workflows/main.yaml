@@ -1,0 +1,32 @@
+name: Laravel Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main # Cambia si tu rama principal se llama distinto (ej. master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, xml, curl, zip, fileinfo, mysql
+
+      - name: Instalar dependencias de Composer
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Subir por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          local-dir: ./
