@@ -17,10 +17,10 @@ class AuthController extends Controller
 
     public function registerView()
     {
-        return view('auth.registro');
+        return view('auth.register');
     }
 
-    public function crearRegistro(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:100',
@@ -41,20 +41,20 @@ class AuthController extends Controller
             return redirect()->route('dashboard-admin.index');
         }
 
-        return redirect()->route('intro.view');
+        return redirect()->route('home.view');
     }
 
-    public function iniciarSesion(Request $request)
+    public function login(Request $request)
     {
-        $credenciales = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credenciales))
+        if (Auth::attempt($credentials))
         {
             if (Auth::user()->tipo === 'admin')
             {
                 return redirect()->route('dashboard-admin.index');
             } else {
-                return redirect()->route('intro.view');
+                return redirect()->route('home.view');
             }
         }
 

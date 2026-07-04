@@ -47,8 +47,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function fotos()
+    public function publications()
     {
-        return $this->hasMany(Foto::class);
+        return $this->hasMany(Publication::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

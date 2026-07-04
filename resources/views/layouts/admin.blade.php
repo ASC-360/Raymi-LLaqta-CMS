@@ -1,36 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@section('content')
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <div class="relative p-2 w-full h-screen flex gap-2 overflow-hidden">
 
-    {{-- Titulo dinamico --}}
-    <title>@yield('title')</title>
+        {{-- Background decoration --}}
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-amber-500 rounded-full blur-3xl opacity-40">
+        </div>
 
-    {{-- Llamar al CSS y JS con Vite dinamicamente --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-900 rounded-full blur-3xl opacity-40">
+        </div>
 
-<body class="dark:bg-gray-800">
+        {{-- Main content --}}
+        <div class="relative z-10 flex w-full gap-2">
 
-    {{-- Siderbar dinamico --}}
-    <x-siderbar />
+            <x-siderbar />
 
-    <button class="absolute top-1 right-1 z-100 p-2 hover:bg-gray-200 rounded-full flex items-center gap-2 dark:text-white hover:dark:bg-gray-900" id="toogle_boton"><span class="material-symbols-outlined">
-            dark_mode
-        </span></button>
+            <main class="transition-all duration-300 rounded-md w-full">
+                @yield('content')
+            </main>
 
+        </div>
 
-    {{-- Contenido dinamico --}}
-    <main class="mx-4">
-        @yield('content')
-    </main>
+    </div>
+    
+@endsection
 
-
-</body>
-
-</html>

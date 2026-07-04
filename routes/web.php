@@ -1,43 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FotoController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BarrioController;
-use App\Http\Controllers\ViewController;
+use App\Http\Controllers\PublicationController;
 
-Route::get('/', function () {
-    return view('inicio');
-});
+/*
+|--------------------------------------------------------------------------
+| MAIN
+|--------------------------------------------------------------------------
+*/
+Route::view('/', 'sections.home')->name('home.view');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+/*
+|--------------------------------------------------------------------------
+| WEB SECTIONS
+|--------------------------------------------------------------------------
+*/
 
-    Route::resource('dashboard-admin', AdminController::class);
+Route::view('/inicio', 'sections.home')->name('home.view');
 
-    Route::get('dashboard-galeria', [AdminController::class, 'indexFotoDashboard'])->name('dashboard.galeria');
-});
-
-Route::middleware(['auth'])->group(function () {
-
-    Route::resource('fotos', FotoController::class);
-
-    Route::resource('barrios', BarrioController::class);
-
-    // Ruta para la sección de Historia
-    Route::get('/home', [ViewController::class, 'intro'])->name('intro.view');
-
-    // Ruta para la sección de Historia
-    Route::get('/history', [ViewController::class, 'history'])->name('history.view');
-
-    // Ruta para la sección de Galería
-    Route::get('/gallery', [ViewController::class, 'gallery'])->name('gallery.view');
-
-    // Ruta para la sección de Ubicación
-    Route::get('/location', [ViewController::class, 'location'])->name('location.view');
-
-    // Ruta para la sección de Testimonios
-    Route::get('/testimonials', [ViewController::class, 'testimonials'])->name('testimonials.view');
-});
-
+Route::get('/publicaciones', [PublicationController::class, 'index'])
+    ->name('publications.view');
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/comment.php';
+require __DIR__ . '/publication.php';

@@ -1,135 +1,131 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Raymi Llaqta de Chachapoyas</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
-    @vite(['resources/css/styles.css', 'resources/js/script.js', 'resources/css/app.css', 'resources/js/app.js'])
+
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js',
+    ])
 </head>
 
-<body class="dark:bg-gray-800">
-    <div class="loader-container">
-        <div class="loader"></div>
-    </div>
+<body class="w-full">
 
-    <!-- Header -->
-    <header>
-        <nav class="dark:bg-gray-700">
-            <div class="font-medium text-2xl sm:text-3xl md:text-3xl bg-gradient-to-r from-blue-500 to-sky-400 bg-clip-text text-transparent text-center">
-                <a href="{{ route('intro.view') }}">
-                    Raymi Llaqta
-                </a>
-            </div>
+    <!-- HEADER -->
+    <header class="bg-white shadow-md">
+        <nav class="flex items-center justify-between px-4 py-3">
 
-            <ul class="text-[16px]">
-                <li class="active"><a href="{{ route('intro.view') }}">Inicio</a></li>
-                <li><a href="{{ route('history.view') }}">Historia</a></li>
-                <li><a href="{{ route('gallery.view') }}">Galería</a></li>
-                <li><a href="{{ route('location.view') }}">Ubicación</a></li>
-                <li><a href="{{ route('testimonials.view') }}">Testimonios</a></li>
-                @if (Auth::user()->tipo === 'admin')
-                    <a href="{{ route('dashboard-admin.index') }}" class="ml-2 ">Dashboard</a>
-                @endif
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit"
-                        class="ml-4 bg-transparent rounded-2xl text-blue-600 py-1 px-2 border-blue-600 border-2 hover:bg-blue-600 hover:text-white items-center">Cerrar
-                        sesión</button>
-                </form>
+            <!-- LOGO -->
+            <a href="{{ route('home.view') }}">
+                <img src="{{ asset('img/raymi-llaqta-logo.png') }}" class="h-10 md:h-12" alt="Raymi Llaqta">
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <ul class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+
+                <li>
+                    <x-ui.link href="{{ route('home.view') }}" class="hover:text-amber-900">
+                        Inicio
+                    </x-ui.link>
+                </li>
+
+                <li>
+                    <x-ui.link href="{{ route('publications.view') }}" class="hover:text-amber-900">
+                        Posts
+                    </x-ui.link>
+                </li>
+
+                {{-- DASHBOARD SOLO ADMIN --}}
+                @auth
+                    @if(auth()->user()->role === 'admin')
+                        <li>
+                            <x-ui.link href="{{ route('dashboard.admin.view') }}" class="hover:text-amber-900">
+                                Dashboard
+                            </x-ui.link>
+                        </li>
+                    @endif
+                @endauth
+
+                {{-- SI NO ESTA LOGEADO --}}
+                @guest
+                    <div class="flex gap-2">
+                        <x-ui.button>
+                            <a href="{{ route('login.view') }}">
+                                Iniciar sesión
+                            </a>
+                        </x-ui.button>
+
+                        <x-ui.button class="bg-white text-amber-900! border border-amber-900 hover:bg-amber-100!">
+                            <a href="{{ route('register.view') }}">
+                                Registrarse
+                            </a>
+                        </x-ui.button>
+                    </div>
+                @endguest
+
+                {{-- SI ESTA LOGEADO --}}
+                @auth
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <x-ui.button type="submit" class="text-red-600 hover:text-red-800">
+                                Cerrar sesión
+                            </x-ui.button>
+                        </form>
+                    </li>
+                @endauth
             </ul>
 
-            {{-- Boton Nav Movil --}}
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <!-- MOBILE BUTTON -->
+            <x-ui.button class="mobile-menu-btn md:hidden text-2xl text-amber-900">
+                <i class="fas fa-bars"></i>
+            </x-ui.button>
         </nav>
     </header>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-menu">
-        <button class="close-menu"><i class="fas fa-times"></i></button>
-        <ul>
-            <li class="active"><a href="{{ route('intro.view') }}">Inicio</a></li>
-            <li><a href="{{ route('history.view') }}">Historia</a></li>
-            <li><a href="{{ route('gallery.view') }}">Galería</a></li>
-            <li><a href="{{ route('location.view') }}">Ubicación</a></li>
-            <li><a href="{{ route('testimonials.view') }}">Testimonios</a></li>
-            @if (Auth::user()->tipo === 'admin')
-                <a href="{{ route('dashboard-admin.index') }}">Dashboard</a>
-            @endif
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button type="submit"
-                    class="bg-transparent w-full rounded-2xl text-blue-600 py-1 px-2 border-blue-600 border-2 hover:bg-blue-600 hover:text-white items-center mt-4">Cerrar
-                    sesión</button>
-            </form>
-        </ul>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu fixed inset-0 bg-white z-50 hidden flex-col">
+
+        <!-- CLOSE -->
+        <x-ui.button class="close-menu absolute top-4 right-4 text-3xl text-amber-900">
+            <i class="fas fa-times"></i>
+            </x-ui.button>
+
+            <!-- NAV -->
+            <nav class="flex flex-col gap-5 mt-16 px-6 text-lg">
+
+                <x-ui.link href="{{ route('home.view') }}" class="flex items-center gap-3">
+                    <i class="fas fa-home text-amber-900"></i> Inicio
+                </x-ui.link>
+
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <x-ui.button class="flex items-center gap-3 text-red-600">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </x-ui.button>
+                </form>
+
+            </nav>
+
+
     </div>
 
-    <!-- Main Content -->
-    <main class="container">
+    <!-- CONTENT -->
+    <main class="w-full px-2">
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-6 mt-auto">
-        <div class="footer-content grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="footer-column">
-                <h4>Raymillacta</h4>
-                <p>Descubre la magia de uno de los sitios arqueológicos más importantes de la cultura Chachapoyas.</p>
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/people/Raymi-Llaqta/61555832160237/" class="social-icon"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/p/DJadQ7Uua5O/?igsh=cHJqbjlqb2E4aTR4" class="social-icon"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@raymillaqta2025" class="social-icon"><i
-                            class="fab fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/channel/UCNWhuZ2710hdQF6XqB8grDw" class="social-icon"><i
-                            class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h4>Enlaces Rápidos</h4>
-                <ul class="footer-links">
-                    <li><a href="{{ route('intro.view') }}"><i class="fas fa-chevron-right"></i> Inicio</a></li>
-                    <li><a href="{{ route('history.view') }}"><i class="fas fa-chevron-right"></i> Historia</a></li>
-                    <li><a href="{{ route('gallery.view') }}"><i class="fas fa-chevron-right"></i> Galería</a></li>
-                    <li><a href="{{ route('location.view') }}"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
-                    <li><a href="{{ route('testimonials.view') }}"><i class="fas fa-chevron-right"></i> Testimonios</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-column footer-contact">
-                <h4>Contacto</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Centro de Visitantes, Chachapoyas, Amazonas, Perú</p>
-                <p><i class="fas fa-phone"></i> +51 945 678 123</p>
-                <p><i class="fas fa-envelope"></i> info@raymillacta.pe</p>
-                <p><i class="fas fa-clock"></i> Lunes - Domingo: 8:00 AM - 5:00 PM</p>
-            </div>
-        </div>
-
-        <div class="copyright text-center mt-6">
-            <p>© 2025 Raymillacta de los Chachapoyas. Todos los derechos reservados.</p>
-        </div>
-        <div class="flex gap-2 justify-center flex-col">
-            <p class="text-center text-gray-400">Realizado por estudiantes de SENATI - Chachapoyas</p>
-            <div class="flex justify-center gap-2">
-                <p class="text-orange-200">Anthony Sucso (ASC)</p>
-                <p> | </p>
-                <p> Harold A.A.A </p>
-            </div>
-        </div>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white p-6 mt-10 text-center">
+        © 2025 Raymi Llaqta de Chachapoyas
     </footer>
 
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
 </body>
 
 </html>

@@ -10,10 +10,10 @@ Route::get('login', [AuthController::class, 'loginView'])->name('login.view');
 Route::get('registro', [AuthController::class, 'registerView'])->name('register.view');
 
 // Crear usuario
-Route::post('registro-crear', [AuthController::class, 'crearRegistro'])->name('register');
+Route::post('registro-crear', [AuthController::class, 'register'])->name('register');
 
 // Iniciar sesion
-Route::post('login', [AuthController::class, 'iniciarSesion'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
 // Cerrar sesion
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
